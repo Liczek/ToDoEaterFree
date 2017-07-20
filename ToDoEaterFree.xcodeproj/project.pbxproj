@@ -16,6 +16,7 @@
 		C84009D61F1A691C0075897D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84009D51F1A691C0075897D /* Category.swift */; };
 		C84009D81F1A69340075897D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84009D71F1A69340075897D /* Task.swift */; };
 		C84009E21F1A71570075897D /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84009E11F1A71570075897D /* CategoryTableViewCell.swift */; };
+		C84228591F213FB8004B0768 /* HideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84228581F213FB8004B0768 /* HideBar.swift */; };
 		C88DC0451F1D42EB008A4D78 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88DC0441F1D42EB008A4D78 /* MainViewController.swift */; };
 		C88DC0471F1D438A008A4D78 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88DC0461F1D438A008A4D78 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		C84009D51F1A691C0075897D /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		C84009D71F1A69340075897D /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		C84009E11F1A71570075897D /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		C84228581F213FB8004B0768 /* HideBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideBar.swift; sourceTree = "<group>"; };
 		C88DC0441F1D42EB008A4D78 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C88DC0461F1D438A008A4D78 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +74,7 @@
 				C84009BA1F1A581E0075897D /* Main.storyboard */,
 				C88DC0441F1D42EB008A4D78 /* MainViewController.swift */,
 				C88DC0461F1D438A008A4D78 /* SearchBar.swift */,
+				C84228581F213FB8004B0768 /* HideBar.swift */,
 				C84009C01F1A581E0075897D /* Assets.xcassets */,
 				C84009C21F1A581E0075897D /* LaunchScreen.storyboard */,
 				C84009C51F1A581E0075897D /* Info.plist */,
@@ -158,6 +161,7 @@
 				C88DC0451F1D42EB008A4D78 /* MainViewController.swift in Sources */,
 				C84009BF1F1A581E0075897D /* ToDoEaterFree.xcdatamodeld in Sources */,
 				C84009B91F1A581E0075897D /* CategoryViewController.swift in Sources */,
+				C84228591F213FB8004B0768 /* HideBar.swift in Sources */,
 				C84009D81F1A69340075897D /* Task.swift in Sources */,
 				C84009B71F1A581E0075897D /* AppDelegate.swift in Sources */,
 				C88DC0471F1D438A008A4D78 /* SearchBar.swift in Sources */,

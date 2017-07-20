@@ -96,7 +96,7 @@ class SearchBar: UIView, UITextFieldDelegate {
         
         
         //searchButton
-        searchButton.setTitle("Tap", for: .normal)
+        searchButton.setTitle("Search", for: .normal)
         searchButton.setTitleColor(UIColor.red.withAlphaComponent(0.5), for: .normal)
         searchButton.backgroundColor = UIColor.white.withAlphaComponent(0.8)
         //searchButton.clipsToBounds = true
@@ -112,6 +112,7 @@ class SearchBar: UIView, UITextFieldDelegate {
             NSLayoutConstraint.deactivate(self.disabledConstraints)
             NSLayoutConstraint.activate(self.enabledConstraints)
             textField.backgroundColor = UIColor.white
+            textField.placeholder = "Enter Category or Task title"
             self.layoutIfNeeded()
         }
         
@@ -122,9 +123,12 @@ class SearchBar: UIView, UITextFieldDelegate {
             NSLayoutConstraint.deactivate(self.enabledConstraints)
             NSLayoutConstraint.activate(self.disabledConstraints)
             textField.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+            textField.placeholder = "Search"
             textField.resignFirstResponder()
             self.layoutIfNeeded()
+            
         }
+        
         
     }
     
@@ -133,6 +137,7 @@ class SearchBar: UIView, UITextFieldDelegate {
             NSLayoutConstraint.deactivate(self.enabledConstraints)
             NSLayoutConstraint.activate(self.disabledConstraints)
             textField.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+            textField.placeholder = "Search"
             textField.resignFirstResponder()
             self.layoutIfNeeded()
         }

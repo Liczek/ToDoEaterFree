@@ -12,7 +12,7 @@ class MainViewController: UIViewController {
     
     let searchBarView = SearchBar()
     let categoryTableView = UITableView()
-    let hideBarView = UIView()
+    let hideBarView = HideBar()
     
     var universalConstraints = [NSLayoutConstraint]()
 
@@ -20,9 +20,12 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.addSubview(searchBarView)
+        self.view.addSubview(hideBarView)
         configureUniversalConstraints()
         NSLayoutConstraint.activate(universalConstraints)
+        
         searchBarView.backgroundColor = UIColor.red
+        hideBarView.backgroundColor = UIColor.darkGray
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,12 +35,19 @@ class MainViewController: UIViewController {
     
     func configureUniversalConstraints() {
         searchBarView.translatesAutoresizingMaskIntoConstraints = false
+        hideBarView.translatesAutoresizingMaskIntoConstraints = false
         
+        //searchBar
         universalConstraints.append(searchBarView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor))
-        //universalConstraints.append(searchBarView.centerYAnchor.constraint(equalTo: view.centerYAnchor))
         universalConstraints.append(searchBarView.widthAnchor.constraint(equalTo: view.widthAnchor))
-        universalConstraints.append(searchBarView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15))
+        universalConstraints.append(searchBarView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08))
         universalConstraints.append(searchBarView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
+        
+        //hideBar
+        universalConstraints.append(hideBarView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor, constant: 0))
+        universalConstraints.append(hideBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor))
+        universalConstraints.append(hideBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor))
+        universalConstraints.append(hideBarView.heightAnchor.constraint(equalToConstant: 40))
     }
 
     /*
