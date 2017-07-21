@@ -11,6 +11,7 @@ import UIKit
 class HideBar: UIView {
     
     var hideButton = UIButton()
+    var isSlidedDown = true
     var onOffSegment = UISegmentedControl(items: ["Show empty", "Hide empty"])
     var universalConstraints = [NSLayoutConstraint]()
     
@@ -27,15 +28,25 @@ class HideBar: UIView {
         configureHideButton()
         configureOnOffSegment()
         
-        
-        
-        
+    }
+    
+    func toggleSlideDown() {
+        isSlidedDown = !isSlidedDown
     }
     
     func configureHideButton() {
         hideButton.setTitle("Hide empty catalogs", for: .normal)
         hideButton.titleLabel!.font = UIFont.systemFont(ofSize: 10)
+        hideButton.addTarget(self, action: #selector(pressOrDragHideButton), for: .touchUpInside)
+        hideButton.addTarget(self, action: #selector(pressOrDragHideButton), for: .touchDragExit)
     }
+    
+    func pressOrDragHideButton() {
+        print("button pressed or draged")
+        toggleSlideDown()
+    }
+    
+    
     
     func configureOnOffSegment() {
         //let segmentOptions = ["Show empty", "Hide empty"]
@@ -44,6 +55,16 @@ class HideBar: UIView {
         onOffSegment.tintColor = UIColor.white
         onOffSegment.layer.cornerRadius = 5
         onOffSegment.selectedSegmentIndex = 0
+        onOffSegment.addTarget(self, action: #selector(toggleCatalogs(sender:)), for: .valueChanged)
+    }
+    
+    func toggleCatalogs(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 1 :
+            hideEmptyCatalogs()
+        default:
+            showEmptyCatalogs()
+        }
     }
     
     func configureHideBarUniversalConstraints() {
@@ -65,6 +86,14 @@ class HideBar: UIView {
         universalConstraints.append(onOffSegment.centerXAnchor.constraint(equalTo: centerXAnchor))
         universalConstraints.append(onOffSegment.heightAnchor.constraint(equalToConstant: 20))
         
+    }
+
+    func showEmptyCatalogs() {
+        print("Show Catalogs Mode ON")
+    }
+    
+    func hideEmptyCatalogs() {
+        print("Show Catalogs Mode OFF")
     }
     
     
