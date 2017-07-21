@@ -38,7 +38,7 @@ class HideBar: UIView {
         hideButton.setTitle("Hide empty catalogs", for: .normal)
         hideButton.titleLabel!.font = UIFont.systemFont(ofSize: 10)
         hideButton.addTarget(self, action: #selector(pressOrDragHideButton), for: .touchUpInside)
-        hideButton.addTarget(self, action: #selector(pressOrDragHideButton), for: .touchDragExit)
+        
     }
     
     func pressOrDragHideButton() {

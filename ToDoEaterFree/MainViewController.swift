@@ -14,6 +14,8 @@ class MainViewController: UIViewController {
     let categoryTableView = UITableView()
     let hideBarView = HideBar()
     
+    
+    
     var universalConstraints = [NSLayoutConstraint]()
     var hiddenBarConstraints = [NSLayoutConstraint]()
     var shownBarConstraints = [NSLayoutConstraint]()
@@ -33,6 +35,8 @@ class MainViewController: UIViewController {
         hideBarView.backgroundColor = UIColor.darkGray
         
         hideShowHideBar()
+        
+        hideBarView.hideButton.addTarget(self, action: #selector(hideShowHideBar), for: .touchUpInside)
     }
 
     override func didReceiveMemoryWarning() {
