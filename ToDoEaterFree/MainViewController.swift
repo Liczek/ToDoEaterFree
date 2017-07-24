@@ -22,6 +22,8 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setSettingButton()
 
         self.view.addSubview(searchBarView)
         self.view.addSubview(hideBarView)
@@ -55,41 +57,60 @@ class MainViewController: UIViewController {
         universalConstraints.append(searchBarView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
         
         //hideBar
-        universalConstraints.append(hideBarView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor, constant: 0))
+        //universalConstraints.append(hideBarView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor, constant: 0))
         universalConstraints.append(hideBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor))
         universalConstraints.append(hideBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor))
-        
+        universalConstraints.append(hideBarView.heightAnchor.constraint(equalToConstant: 40))
     }
     
     func configureShownBarConstraints() {
-        shownBarConstraints.append(hideBarView.heightAnchor.constraint(equalToConstant: 40))
+        //shownBarConstraints.append(hideBarView.heightAnchor.constraint(equalToConstant: 40))
+        shownBarConstraints.append(hideBarView.bottomAnchor.constraint(equalTo: view.bottomAnchor))
     }
     
     func configureHiddenBarConstraints() {
-        hiddenBarConstraints.append(hideBarView.heightAnchor.constraint(equalToConstant: 18))
+        //hiddenBarConstraints.append(hideBarView.heightAnchor.constraint(equalToConstant: 18))
+        hiddenBarConstraints.append(hideBarView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 22))
     }
     
     
     func hideShowHideBar() {
         if !hideBarView.isSlidedDown {
-            print("Main view Bar is Hidden")
-            UIView.animate(withDuration: 1, animations: { 
+            print("Main view Bar is Shown")
+            UIView.animate(withDuration: 1) {
                 NSLayoutConstraint.deactivate(self.hiddenBarConstraints)
                 NSLayoutConstraint.activate(self.shownBarConstraints)
-           
-            })
+                self.hideBarView.layoutIfNeeded()
+            }
             
         } else {
-            print("Main view Bar is Shown")
-            UIView.animate(withDuration: 1, animations: { 
+            print("Main view Bar is Hidden")
+            UIView.animate(withDuration: 1) {
                 NSLayoutConstraint.deactivate(self.shownBarConstraints)
                 NSLayoutConstraint.activate(self.hiddenBarConstraints)
-            })
+                self.hideBarView.layoutIfNeeded()
+            }
             
         }
-        hideBarView.layoutIfNeeded()
+        
     }
     
+    func setSettingButton() {
+        let settingsLogo = UIImage(named: "settings")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: settingsLogo, style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToSettingsView))
+        navigationController?.navigationBar.tintColor = UIColor.red
+    }
+   
+    
+    func goToSettingsView() {
+        performSegue(withIdentifier: "goToSettings", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToSettings" {
+            _ = segue.destination as! SettingsViewController
+        }
+    }
 
     /*
     // MARK: - Navigation
