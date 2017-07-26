@@ -10,22 +10,45 @@ import Foundation
 import UIKit
 
 class SettingsViewController: UITableViewController {
-    //var colors = ["Red", "Blue", "Green"]
+    
+    var defaults = UserDefaults.standard
+    var colorID = Int()
+    var curentAppColor = AppColors()
+    
+    
     
     var colors = [AppColorPicker]()
+    var id = String()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        colorID = defaults.integer(forKey: "ActualColorOfApplication")
+        curentAppColor.colorID = self.colorID
+        curentAppColor.configureColors()
+        
+        colors[colorID].isActive = true
+        tableView.backgroundColor = curentAppColor.bgColor1
+        
+        
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         colors.append(AppColorPicker(colorName: "Green", isActive: false, color: UIColor.green))
-        colors.append(AppColorPicker(colorName: "Red", isActive: true, color: UIColor.red))
+        colors.append(AppColorPicker(colorName: "Red", isActive: false, color: UIColor.red))
         colors.append(AppColorPicker(colorName: "Blue", isActive: false, color: UIColor.blue))
         
         
-    
-    }
+        
+        }
     
     func toggle(sender: UISwitch) {
-        let id: String = sender.restorationIdentifier!
+        id = sender.restorationIdentifier!
+        let intID = Int(id)
+        defaults.set(intID, forKey: "ActualColorOfApplication")
+        print(intID!)
+        
         
         let changedSwitch = tableView.cellForRow(at: IndexPath(row: Int(id)!, section: 0)) as! ColorTableViewCell
         
@@ -39,8 +62,14 @@ class SettingsViewController: UITableViewController {
         colors[1].isActive = false
         colors[2].isActive = false
         
-        colors[Int(id)!].isActive = false
+        colors[Int(id)!].isActive = true
         changedSwitch.switchItem.setOn(true, animated: true)
+        greenSwitch.switchItem.isEnabled = true
+        redSwitch.switchItem.isEnabled = true
+        blueSwitch.switchItem.isEnabled = true
+        changedSwitch.switchItem.isEnabled = false
+//        navigationController?.popViewController(animated: true)
+        viewWillAppear(true)
     }
     
     
@@ -53,10 +82,16 @@ class SettingsViewController: UITableViewController {
         return colors.count
     }
     
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath) as! ColorTableViewCell
         let color = colors[indexPath.row]
+        if color.isActive == true {
+            cell.switchItem.isOn = true
+            cell.switchItem.isEnabled = false
+        }
         cell.switchItem.restorationIdentifier = "\(indexPath.row)"
         cell.switchItem.addTarget(self, action: #selector(toggle), for: .valueChanged)
         cell.textLabel?.text = color.name
@@ -73,6 +108,18 @@ class SettingsViewController: UITableViewController {
         return "Application Color"
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            tableView.deselectRow(at: indexPath, animated: false)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.section == 0 {
+            return nil
+        }
+        return indexPath
+    }
     
     
     

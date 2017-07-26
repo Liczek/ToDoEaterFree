@@ -19,4 +19,6 @@ class AppColorPicker {
         self.isActive = isActive
         self.color = color
     }
+    
+    
 }

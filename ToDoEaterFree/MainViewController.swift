@@ -15,11 +15,22 @@ class MainViewController: UIViewController {
     let hideBarView = HideBar()
     
     
+    var defaults = UserDefaults.standard
+    var colorID = Int()
+    var curentAppColor = AppColors()
+    
     
     var universalConstraints = [NSLayoutConstraint]()
     var hiddenBarConstraints = [NSLayoutConstraint]()
     var shownBarConstraints = [NSLayoutConstraint]()
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        colorID = defaults.integer(forKey: "ActualColorOfApplication")
+        curentAppColor.colorID = self.colorID
+        curentAppColor.configureColors()
+        view.backgroundColor = curentAppColor.bgColor1
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -104,6 +115,7 @@ class MainViewController: UIViewController {
     
     func goToSettingsView() {
         performSegue(withIdentifier: "goToSettings", sender: nil)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
