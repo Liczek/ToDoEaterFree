@@ -26,6 +26,8 @@ class SearchBar: UIView, UITextFieldDelegate {
         super.willMove(toSuperview: newSuperview)
         
         textField.delegate = self
+        let tapBackground: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchBar.endEditingTextField))
+        addGestureRecognizer(tapBackground)
         
         addSubview(backgroundImage)
         addSubview(textField)
@@ -65,8 +67,8 @@ class SearchBar: UIView, UITextFieldDelegate {
     func configureDisabledSearchBarConstraints() {
         
         //textField
-        disabledConstraints.append(textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: universalDistance))
         disabledConstraints.append(textField.trailingAnchor.constraint(equalTo: searchButton.leadingAnchor))
+        disabledConstraints.append(textField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.40))
         
         //button
         disabledConstraints.append(searchButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.0))
@@ -84,17 +86,22 @@ class SearchBar: UIView, UITextFieldDelegate {
     
     func configurePropertiesOfViews() {
         
-        //background
-        backgroundImage.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+       
         
         //textField
         textField.placeholder = "Search"
         textField.backgroundColor = UIColor.white
+        textField.borderStyle = .roundedRect
+        
         
         //searchButton
-        searchButton.setTitle("Tap", for: .normal)
+        searchButton.setTitle("Search", for: .normal)
         searchButton.setTitleColor(UIColor.red.withAlphaComponent(0.5), for: .normal)
-        searchButton.backgroundColor = UIColor.darkGray
+        searchButton.backgroundColor = UIColor.white
+        //searchButton.clipsToBounds = true
+        searchButton.layer.borderWidth = 1
+        searchButton.layer.borderColor = UIColor.red.cgColor
+        searchButton.layer.cornerRadius = 5
         
     }
     
@@ -103,12 +110,23 @@ class SearchBar: UIView, UITextFieldDelegate {
         UIView.animate(withDuration: 1) { 
             NSLayoutConstraint.deactivate(self.disabledConstraints)
             NSLayoutConstraint.activate(self.enabledConstraints)
+            textField.backgroundColor = UIColor.white
+            textField.placeholder = "Enter Category or Task title"
             self.layoutIfNeeded()
         }
         
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 1) {
+            NSLayoutConstraint.deactivate(self.enabledConstraints)
+            NSLayoutConstraint.activate(self.disabledConstraints)
+            textField.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+            textField.placeholder = "Search"
+            textField.resignFirstResponder()
+            self.layoutIfNeeded()
+            
+        }
         
         
     }
@@ -117,11 +135,25 @@ class SearchBar: UIView, UITextFieldDelegate {
         UIView.animate(withDuration: 1) { 
             NSLayoutConstraint.deactivate(self.enabledConstraints)
             NSLayoutConstraint.activate(self.disabledConstraints)
+            textField.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+            textField.placeholder = "Search"
             textField.resignFirstResponder()
             self.layoutIfNeeded()
         }
         
         return true
     }
+    
+    func endEditingTextField() {
+        self.endEditing(true)
+        
+    }
+    
+    
+    
+    
+    
+    
 
 }
+
