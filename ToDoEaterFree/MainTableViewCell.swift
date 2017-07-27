@@ -25,6 +25,8 @@ class MainTableViewCell: UITableViewCell {
         addSubview(categoryNameLabel)
         addSubview(descriptionLabel)
         
+        configureConstraints()
+        
         NSLayoutConstraint.activate(universalConstraints)
         
         categoryNameLabel.font = UIFont.preferredFont(forTextStyle: .headline)
@@ -39,15 +41,20 @@ class MainTableViewCell: UITableViewCell {
     
     func configureConstraints() {
         
+        categoryNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         //categoryNameLabel
         universalConstraints.append(categoryNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5))
         universalConstraints.append(categoryNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5))
         universalConstraints.append(categoryNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5))
+        universalConstraints.append(categoryNameLabel.heightAnchor.constraint(equalToConstant: 16))
         
         //descriptionLabel
-        universalConstraints.append(categoryNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5))
-        universalConstraints.append(categoryNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5))
-        universalConstraints.append(categoryNameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5))
+        universalConstraints.append(descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5))
+        universalConstraints.append(descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5))
+        universalConstraints.append(descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5))
+        universalConstraints.append(descriptionLabel.heightAnchor.constraint(equalToConstant: 12))
         
     }
 
