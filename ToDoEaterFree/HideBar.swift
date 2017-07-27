@@ -10,10 +10,14 @@ import UIKit
 
 class HideBar: UIView {
     
+    var curentAppColor = AppColors()
+    var colorID = Int()
+    
     var hideButton = UIButton()
     var isSlidedDown = true
     var onOffSegment = UISegmentedControl(items: ["Show empty", "Hide empty"])
     var universalConstraints = [NSLayoutConstraint]()
+    var defaults = UserDefaults.standard
     
     
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -25,6 +29,7 @@ class HideBar: UIView {
         configureHideBarUniversalConstraints()
         NSLayoutConstraint.activate(universalConstraints)
         
+        configureColors()
         configureHideButton()
         configureOnOffSegment()
         
@@ -51,8 +56,8 @@ class HideBar: UIView {
     func configureOnOffSegment() {
         //let segmentOptions = ["Show empty", "Hide empty"]
         //onOffSegment = UISegmentedControl(items: segmentOptions)
-        onOffSegment.backgroundColor = UIColor.red
-        onOffSegment.tintColor = UIColor.white
+        onOffSegment.backgroundColor = curentAppColor.bgColor3
+        onOffSegment.tintColor = curentAppColor.tintCustomColor
         onOffSegment.layer.cornerRadius = 5
         onOffSegment.selectedSegmentIndex = 0
         onOffSegment.addTarget(self, action: #selector(toggleCatalogs(sender:)), for: .valueChanged)
@@ -96,6 +101,12 @@ class HideBar: UIView {
         print("Show Catalogs Mode OFF")
     }
     
+    func configureColors() {
+        
+        colorID = defaults.integer(forKey: "ActualColorOfApplication")
+        curentAppColor.colorID = self.colorID
+        curentAppColor.configureColors()
+    }
     
     
     

@@ -28,8 +28,9 @@ class SettingsViewController: UITableViewController {
         curentAppColor.configureColors()
         
         colors[colorID].isActive = true
-        tableView.backgroundColor = curentAppColor.bgColor1
         
+        configureSettingViewColors()
+        configureCellsColors()
         
     }
 
@@ -69,6 +70,8 @@ class SettingsViewController: UITableViewController {
         blueSwitch.switchItem.isEnabled = true
         changedSwitch.switchItem.isEnabled = false
 //        navigationController?.popViewController(animated: true)
+        
+        reloadInputViews()
         viewWillAppear(true)
     }
     
@@ -87,6 +90,10 @@ class SettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath) as! ColorTableViewCell
+        
+        cell.backgroundColor = curentAppColor.bgColor2
+        cell.nameLabel.textColor = curentAppColor.textColor1
+        
         let color = colors[indexPath.row]
         if color.isActive == true {
             cell.switchItem.isOn = true
@@ -121,6 +128,16 @@ class SettingsViewController: UITableViewController {
         return indexPath
     }
     
+    func configureSettingViewColors() {
+        tableView.backgroundColor = curentAppColor.bgColor3
+        tableView.separatorColor = curentAppColor.borderColor1
+        navigationController?.navigationBar.tintColor = curentAppColor.tintCustomColor
+    }
     
+    func configureCellsColors() {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell") as! ColorTableViewCell
+        cell.backgroundColor = curentAppColor.bgColor2
+        cell.nameLabel.textColor = curentAppColor.textColor1
+    }
     
 }

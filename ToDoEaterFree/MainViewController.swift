@@ -26,10 +26,9 @@ class MainViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        colorID = defaults.integer(forKey: "ActualColorOfApplication")
-        curentAppColor.colorID = self.colorID
-        curentAppColor.configureColors()
-        view.backgroundColor = curentAppColor.bgColor1
+        configureColors()
+        
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +43,7 @@ class MainViewController: UIViewController {
         
         NSLayoutConstraint.activate(universalConstraints)
         
-        searchBarView.backgroundColor = UIColor.red
-        hideBarView.backgroundColor = UIColor.darkGray
+        configureColors()
         
         hideShowHideBar()
         
@@ -109,7 +107,7 @@ class MainViewController: UIViewController {
     func setSettingButton() {
         let settingsLogo = UIImage(named: "settings")
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: settingsLogo, style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToSettingsView))
-        navigationController?.navigationBar.tintColor = UIColor.red
+        
     }
    
     
@@ -122,6 +120,18 @@ class MainViewController: UIViewController {
         if segue.identifier == "goToSettings" {
             _ = segue.destination as! SettingsViewController
         }
+    }
+    
+    func configureColors() {
+        colorID = defaults.integer(forKey: "ActualColorOfApplication")
+        curentAppColor.colorID = self.colorID
+        curentAppColor.configureColors()
+        
+        searchBarView.backgroundImage.backgroundColor = curentAppColor.bgColor3
+        searchBarView.backgroundColor = curentAppColor.bgColor3
+        hideBarView.backgroundColor = curentAppColor.bgColor3
+        view.backgroundColor = curentAppColor.bgColor1
+        navigationController?.navigationBar.tintColor = curentAppColor.tintCustomColor
     }
 
     /*

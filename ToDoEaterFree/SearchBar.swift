@@ -86,19 +86,18 @@ class SearchBar: UIView, UITextFieldDelegate {
     
     func configurePropertiesOfViews() {
         
-        //background
-        backgroundImage.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+       
         
         //textField
         textField.placeholder = "Search"
-        textField.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        textField.backgroundColor = UIColor.white
         textField.borderStyle = .roundedRect
         
         
         //searchButton
         searchButton.setTitle("Search", for: .normal)
         searchButton.setTitleColor(UIColor.red.withAlphaComponent(0.5), for: .normal)
-        searchButton.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        searchButton.backgroundColor = UIColor.white
         //searchButton.clipsToBounds = true
         searchButton.layer.borderWidth = 1
         searchButton.layer.borderColor = UIColor.red.cgColor
