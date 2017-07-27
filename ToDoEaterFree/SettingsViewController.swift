@@ -39,9 +39,6 @@ class SettingsViewController: UITableViewController {
         colors.append(AppColorPicker(colorName: "Green", isActive: false, color: UIColor.green))
         colors.append(AppColorPicker(colorName: "Red", isActive: false, color: UIColor.red))
         colors.append(AppColorPicker(colorName: "Blue", isActive: false, color: UIColor.blue))
-        
-        
-        
         }
     
     func toggle(sender: UISwitch) {
@@ -69,7 +66,7 @@ class SettingsViewController: UITableViewController {
         redSwitch.switchItem.isEnabled = true
         blueSwitch.switchItem.isEnabled = true
         changedSwitch.switchItem.isEnabled = false
-//        navigationController?.popViewController(animated: true)
+        //navigationController?.popViewController(animated: true)
         
         reloadInputViews()
         viewWillAppear(true)

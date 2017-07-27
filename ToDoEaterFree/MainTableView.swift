@@ -9,6 +9,18 @@
 import UIKit
 
 class MainTableView: UITableView {
+    
+    
+    
+    override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+        
+        
+        
+        
+    }
+    
+    
 
     /*
     // Only override draw() if you perform custom drawing.

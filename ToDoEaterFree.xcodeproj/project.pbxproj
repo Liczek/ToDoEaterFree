@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C820EE051F2A6EE2007510F8 /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C820EE041F2A6EE2007510F8 /* MainTableView.swift */; };
+		C820EE071F2A7760007510F8 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C820EE061F2A7760007510F8 /* MainTableViewCell.swift */; };
 		C84009B71F1A581E0075897D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84009B61F1A581E0075897D /* AppDelegate.swift */; };
 		C84009B91F1A581E0075897D /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84009B81F1A581E0075897D /* CategoryViewController.swift */; };
 		C84009BC1F1A581E0075897D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C84009BA1F1A581E0075897D /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C820EE041F2A6EE2007510F8 /* MainTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
+		C820EE061F2A7760007510F8 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		C84009B31F1A581E0075897D /* ToDoEaterFree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoEaterFree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C84009B61F1A581E0075897D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C84009B81F1A581E0075897D /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 				C84009E11F1A71570075897D /* CategoryTableViewCell.swift */,
 				C84009BA1F1A581E0075897D /* Main.storyboard */,
 				C88DC0441F1D42EB008A4D78 /* MainViewController.swift */,
+				C820EE041F2A6EE2007510F8 /* MainTableView.swift */,
+				C820EE061F2A7760007510F8 /* MainTableViewCell.swift */,
 				C852DF2F1F267251007820AF /* SettingsViewController.swift */,
 				C862C6F41F27C47C008740B5 /* AppColors.swift */,
 				C852DF331F2678E0007820AF /* ColorTableViewCell.swift */,
@@ -174,12 +180,14 @@
 				C84009BF1F1A581E0075897D /* ToDoEaterFree.xcdatamodeld in Sources */,
 				C84009B91F1A581E0075897D /* CategoryViewController.swift in Sources */,
 				C862C6F51F27C47D008740B5 /* AppColors.swift in Sources */,
+				C820EE071F2A7760007510F8 /* MainTableViewCell.swift in Sources */,
 				C852DF301F267251007820AF /* SettingsViewController.swift in Sources */,
 				C84228591F213FB8004B0768 /* HideBar.swift in Sources */,
 				C852DF341F2678E0007820AF /* ColorTableViewCell.swift in Sources */,
 				C84009D81F1A69340075897D /* Task.swift in Sources */,
 				C84009B71F1A581E0075897D /* AppDelegate.swift in Sources */,
 				C88DC0471F1D438A008A4D78 /* SearchBar.swift in Sources */,
+				C820EE051F2A6EE2007510F8 /* MainTableView.swift in Sources */,
 				C84009D61F1A691C0075897D /* Category.swift in Sources */,
 				C852DF321F26770C007820AF /* AppColorPicker.swift in Sources */,
 				C84009E21F1A71570075897D /* CategoryTableViewCell.swift in Sources */,

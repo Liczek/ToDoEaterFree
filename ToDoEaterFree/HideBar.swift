@@ -19,7 +19,7 @@ class HideBar: UIView {
     var universalConstraints = [NSLayoutConstraint]()
     var defaults = UserDefaults.standard
     
-    
+
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         
@@ -49,6 +49,7 @@ class HideBar: UIView {
     func pressOrDragHideButton() {
         print("button pressed or draged")
         toggleSlideDown()
+        
     }
     
     

@@ -11,14 +11,12 @@ import UIKit
 class MainViewController: UIViewController {
     
     let searchBarView = SearchBar()
-    let categoryTableView = UITableView()
     let hideBarView = HideBar()
-    
+    let mainTableView = MainTableView()
     
     var defaults = UserDefaults.standard
     var colorID = Int()
     var curentAppColor = AppColors()
-    
     
     var universalConstraints = [NSLayoutConstraint]()
     var hiddenBarConstraints = [NSLayoutConstraint]()
@@ -27,23 +25,39 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureColors()
-        
-        
+        configureMainTableColors()
+        hideBarView.setNeedsDisplay()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         
         setSettingButton()
 
         self.view.addSubview(searchBarView)
         self.view.addSubview(hideBarView)
+        self.view.addSubview(mainTableView)
+        
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
+        
+        self.mainTableView.register(MainTableViewCell.self, forCellReuseIdentifier: "mainCell")
+        
+        
         configureUniversalConstraints()
         configureShownBarConstraints()
         configureHiddenBarConstraints()
         
         NSLayoutConstraint.activate(universalConstraints)
         
+        
+        mainTableView.setContentHuggingPriority(UILayoutPriority.abs(501), for: UILayoutConstraintAxis.vertical)
+        mainTableView.setContentCompressionResistancePriority(UILayoutPriority.abs(499), for: .vertical)
+        
         configureColors()
+        configureMainTableColors()
         
         hideShowHideBar()
         
@@ -58,6 +72,7 @@ class MainViewController: UIViewController {
     func configureUniversalConstraints() {
         searchBarView.translatesAutoresizingMaskIntoConstraints = false
         hideBarView.translatesAutoresizingMaskIntoConstraints = false
+        mainTableView.translatesAutoresizingMaskIntoConstraints = false
         
         //searchBar
         universalConstraints.append(searchBarView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor))
@@ -66,19 +81,22 @@ class MainViewController: UIViewController {
         universalConstraints.append(searchBarView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
         
         //hideBar
-        //universalConstraints.append(hideBarView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor, constant: 0))
         universalConstraints.append(hideBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor))
         universalConstraints.append(hideBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor))
         universalConstraints.append(hideBarView.heightAnchor.constraint(equalToConstant: 40))
+        
+        //mainTable
+        universalConstraints.append(mainTableView.topAnchor.constraint(equalTo: searchBarView.bottomAnchor, constant: 5))
+        universalConstraints.append(mainTableView.bottomAnchor.constraint(equalTo: hideBarView.topAnchor, constant: -5))
+        universalConstraints.append(mainTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor))
+        universalConstraints.append(mainTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor))
     }
     
     func configureShownBarConstraints() {
-        //shownBarConstraints.append(hideBarView.heightAnchor.constraint(equalToConstant: 40))
         shownBarConstraints.append(hideBarView.bottomAnchor.constraint(equalTo: view.bottomAnchor))
     }
     
     func configureHiddenBarConstraints() {
-        //hiddenBarConstraints.append(hideBarView.heightAnchor.constraint(equalToConstant: 18))
         hiddenBarConstraints.append(hideBarView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 22))
     }
     
@@ -144,4 +162,39 @@ class MainViewController: UIViewController {
     }
     */
 
+}
+
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as! MainTableViewCell
+        for _ in 0..<20 {
+            cell.categoryNameLabel.text = "Wiersz testowy nr \(indexPath.row + 1)"
+            cell.descriptionLabel.text = "Detail Text o indexie \(indexPath.row)"
+            configureMainTableColors()
+        }
+        
+        
+        return cell
+    }
+    
+    func configureMainTableColors() {
+        let cell = mainTableView.dequeueReusableCell(withIdentifier: "mainCell") as! MainTableViewCell
+        cell.backgroundColor = curentAppColor.bgColor3
+        cell.categoryNameLabel.textColor = curentAppColor.textColor2
+        cell.descriptionLabel.textColor = curentAppColor.textColor1
+        mainTableView.backgroundColor = curentAppColor.bgColor3
+        mainTableView.separatorColor = curentAppColor.borderColor2
+    }
+    
 }
