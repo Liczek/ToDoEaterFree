@@ -8,27 +8,33 @@
 
 import UIKit
 
+protocol ColorTableViewCellDelegate : NSObjectProtocol {
+    func cellDidToggle(_ cell: ColorTableViewCell, toggle switchState: Bool)
+}
+
 class ColorTableViewCell: UITableViewCell {
     
     var nameLabel = UILabel()
-    var switchItem = UISwitch()
+    public var switchItem = UISwitch()
     var universalLayoutConstraints = [NSLayoutConstraint]()
+    weak open var delegate: ColorTableViewCellDelegate?
+    var color: AppColorPicker?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         separatorInset = UIEdgeInsetsMake(0, 8, 0, 8)
-        
+        selectionStyle = .none
         addSubview(nameLabel)
         addSubview(switchItem)
+        
+        switchItem.addTarget(self, action: #selector(switchDidChange), for: .valueChanged)
         
         configureItemsConstraints()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func switchDidChange() {
+        delegate?.cellDidToggle(self, toggle: switchItem.isOn)
     }
     
     func configureItemsConstraints() {

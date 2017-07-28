@@ -12,9 +12,9 @@ import UIKit
 class AppColorPicker {
     var name = String()
     var isActive = Bool()
-    var color = UIColor()
+    var color = AppColors()
     
-    init(colorName: String, isActive: Bool, color: UIColor) {
+    init(colorName: String, isActive: Bool, color: AppColors) {
         self.name = colorName
         self.isActive = isActive
         self.color = color

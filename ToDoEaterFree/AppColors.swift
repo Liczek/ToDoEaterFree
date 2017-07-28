@@ -25,6 +25,14 @@ class AppColors {
     var placeholderColor2 = UIColor()
     var tintCustomColor = UIColor()
     
+    convenience init(colorId: Int) {
+        self.init()
+        
+        colorID = colorId
+        configureColors()
+        
+        return
+    }
     
     func configureColors() {
         //green
