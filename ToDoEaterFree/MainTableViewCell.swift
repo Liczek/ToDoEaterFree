@@ -15,10 +15,9 @@ class MainTableViewCell: UITableViewCell {
     var catalogImage = UIImageView()
     
     var universalConstraints = [NSLayoutConstraint]()
-
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: "mainCell")
         
         separatorInset = UIEdgeInsetsMake(0, 8, 0, 8)
         
@@ -27,10 +26,21 @@ class MainTableViewCell: UITableViewCell {
         
         configureConstraints()
         
-        NSLayoutConstraint.activate(universalConstraints)
-        
         categoryNameLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         descriptionLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -56,6 +66,7 @@ class MainTableViewCell: UITableViewCell {
         universalConstraints.append(descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5))
         universalConstraints.append(descriptionLabel.heightAnchor.constraint(equalToConstant: 12))
         
+        NSLayoutConstraint.activate(universalConstraints)
     }
 
 }

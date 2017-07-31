@@ -45,11 +45,14 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
         
         let color = colors[indexPath.row]
         cell.switchItem.isOn = color.isActive
+        if cell.switchItem.isOn {
+            cell.switchItem.isEnabled = false
+        }
         cell.nameLabel.textColor = color.color.textColor1
-        cell.backgroundColor = color.color.bgColor2
-        cell.switchItem.onTintColor = color.color.bgColor2
+        cell.backgroundColor = colors[colorID].color.bgColor1
+        cell.switchItem.onTintColor = color.color.bgColor3
         cell.textLabel?.text = color.name
-        cell.switchItem.tintColor = UIColor.lightGray
+        cell.switchItem.tintColor = UIColor.black
         cell.delegate = self
         
         return cell
@@ -63,8 +66,13 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
         colorID = (tableView.indexPath(for: cell)?.row)!
         
         for colorCell in tableView.visibleCells as! [ColorTableViewCell] {
+            let color = colors[colorID].color
+            colorCell.backgroundColor = color.bgColor1
             if colorCell != cell {
                 colorCell.switchItem.setOn(false, animated: true)
+                colorCell.switchItem.isEnabled = true
+            } else {
+                cell.switchItem.isEnabled = false
             }
         }
         

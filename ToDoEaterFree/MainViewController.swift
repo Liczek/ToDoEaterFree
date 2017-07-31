@@ -13,10 +13,13 @@ class MainViewController: UIViewController {
     let searchBarView = SearchBar()
     let hideBarView = HideBar()
     let mainTableView = MainTableView()
+    let mainTableViewCell = MainTableViewCell()
     
     var defaults = UserDefaults.standard
     var colorID = Int()
     var curentAppColor = AppColors()
+    
+    var colors = [AppColorPicker]()
     
     var universalConstraints = [NSLayoutConstraint]()
     var hiddenBarConstraints = [NSLayoutConstraint]()
@@ -27,6 +30,7 @@ class MainViewController: UIViewController {
         configureColors()
         configureMainTableColors()
         hideBarView.setNeedsDisplay()
+        mainTableViewCell.setNeedsDisplay()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +44,12 @@ class MainViewController: UIViewController {
         self.view.addSubview(hideBarView)
         self.view.addSubview(mainTableView)
         
-        mainTableView.delegate = self
-        mainTableView.dataSource = self
         
         self.mainTableView.register(MainTableViewCell.self, forCellReuseIdentifier: "mainCell")
         
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
+
         
         configureUniversalConstraints()
         configureShownBarConstraints()
@@ -151,6 +156,8 @@ class MainViewController: UIViewController {
         view.backgroundColor = curentAppColor.bgColor1
         navigationController?.navigationBar.tintColor = curentAppColor.tintCustomColor
     }
+    
+    
 
     /*
     // MARK: - Navigation
@@ -181,6 +188,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         for _ in 0..<20 {
             cell.categoryNameLabel.text = "Wiersz testowy nr \(indexPath.row + 1)"
             cell.descriptionLabel.text = "Detail Text o indexie \(indexPath.row)"
+            cell.contentView.backgroundColor = curentAppColor.bgColor1
+            cell.categoryNameLabel.textColor = curentAppColor.textColor2
+            cell.descriptionLabel.textColor = curentAppColor.textColor1
+            
             configureMainTableColors()
         }
         
@@ -188,11 +199,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func configureMainTableColors() {
-        let cell = mainTableView.dequeueReusableCell(withIdentifier: "mainCell") as! MainTableViewCell
-        cell.backgroundColor = curentAppColor.bgColor3
-        cell.categoryNameLabel.textColor = curentAppColor.textColor2
-        cell.descriptionLabel.textColor = curentAppColor.textColor1
+    func configureMainTableColors() {        
         mainTableView.backgroundColor = curentAppColor.bgColor3
         mainTableView.separatorColor = curentAppColor.borderColor2
     }
