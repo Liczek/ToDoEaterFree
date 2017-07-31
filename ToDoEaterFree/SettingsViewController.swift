@@ -11,7 +11,7 @@ import UIKit
 
 class SettingsViewController: UITableViewController, ColorTableViewCellDelegate {
     
-    var colorID = Int() {
+    public var colorID = Int() {
         didSet {
             UserDefaults.standard.set(colorID, forKey: "ActualColorOfApplication")
             
@@ -73,6 +73,7 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
                 colorCell.switchItem.isEnabled = true
             } else {
                 cell.switchItem.isEnabled = false
+                NotificationCenter.default.post(name: Notification.Name("NewColorIDIsSet"), object: colorID)
             }
         }
         

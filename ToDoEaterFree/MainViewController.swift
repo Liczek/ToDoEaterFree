@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
     var colorID = Int()
     var curentAppColor = AppColors()
     
-    var colors = [AppColorPicker]()
+    
     
     var universalConstraints = [NSLayoutConstraint]()
     var hiddenBarConstraints = [NSLayoutConstraint]()
@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.configureColorsAfterSwitchToggle(notification: )), name: Notification.Name("NewColorIDIsSet"), object: nil)
         
         
         setSettingButton()
@@ -157,6 +157,9 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.tintColor = curentAppColor.tintCustomColor
     }
     
+    func configureColorsAfterSwitchToggle(notification: Notification) {
+        print("odebrano w MainView informację o zmianie switcha")
+    }
     
 
     /*
