@@ -29,13 +29,12 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         configureColors()
         configureMainTableColors()
-        hideBarView.setNeedsDisplay()
-        mainTableViewCell.setNeedsDisplay()
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.configureColorsAfterSwitchToggle(notification: )), name: Notification.Name("NewColorIDIsSet"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(configureColorsAfterSwitchToggle), name: Notification.Name("NewColorIDIsSet"), object: nil)
         
         
         setSettingButton()
@@ -157,21 +156,15 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.tintColor = curentAppColor.tintCustomColor
     }
     
-    func configureColorsAfterSwitchToggle(notification: Notification) {
+    func configureColorsAfterSwitchToggle() {
         print("odebrano w MainView informację o zmianie switcha")
+        print("\(mainTableView.visibleCells.count)")
+        for cell in mainTableView.visibleCells as! [MainTableViewCell] {
+            cell.backgroundColor = UIColor.black
+            cell.categoryNameLabel.backgroundColor = UIColor.yellow
+        }
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {

@@ -48,10 +48,10 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
         if cell.switchItem.isOn {
             cell.switchItem.isEnabled = false
         }
-        cell.nameLabel.textColor = color.color.textColor1
+        cell.nameLabel.textColor = color.color.black
         cell.backgroundColor = colors[colorID].color.bgColor1
         cell.switchItem.onTintColor = color.color.bgColor3
-        cell.textLabel?.text = color.name
+        cell.nameLabel.text = color.name
         cell.switchItem.tintColor = UIColor.black
         cell.delegate = self
         
@@ -73,7 +73,7 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
                 colorCell.switchItem.isEnabled = true
             } else {
                 cell.switchItem.isEnabled = false
-                NotificationCenter.default.post(name: Notification.Name("NewColorIDIsSet"), object: colorID)
+                NotificationCenter.default.post(name: Notification.Name("NewColorIDIsSet"), object: nil)
             }
         }
         
