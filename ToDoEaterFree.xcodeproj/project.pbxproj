@@ -25,6 +25,7 @@
 		C862C6F51F27C47D008740B5 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C862C6F41F27C47C008740B5 /* AppColors.swift */; };
 		C88DC0451F1D42EB008A4D78 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88DC0441F1D42EB008A4D78 /* MainViewController.swift */; };
 		C88DC0471F1D438A008A4D78 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88DC0461F1D438A008A4D78 /* SearchBar.swift */; };
+		C8F5CFF21F3261650006DFA3 /* SettingsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F5CFF11F3261650006DFA3 /* SettingsHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		C862C6F41F27C47C008740B5 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		C88DC0441F1D42EB008A4D78 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C88DC0461F1D438A008A4D78 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		C8F5CFF11F3261650006DFA3 /* SettingsHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				C820EE041F2A6EE2007510F8 /* MainTableView.swift */,
 				C820EE061F2A7760007510F8 /* MainTableViewCell.swift */,
 				C852DF2F1F267251007820AF /* SettingsViewController.swift */,
+				C8F5CFF11F3261650006DFA3 /* SettingsHeader.swift */,
 				C862C6F41F27C47C008740B5 /* AppColors.swift */,
 				C852DF331F2678E0007820AF /* ColorTableViewCell.swift */,
 				C852DF311F26770C007820AF /* AppColorPicker.swift */,
@@ -185,6 +188,7 @@
 				C84228591F213FB8004B0768 /* HideBar.swift in Sources */,
 				C852DF341F2678E0007820AF /* ColorTableViewCell.swift in Sources */,
 				C84009D81F1A69340075897D /* Task.swift in Sources */,
+				C8F5CFF21F3261650006DFA3 /* SettingsHeader.swift in Sources */,
 				C84009B71F1A581E0075897D /* AppDelegate.swift in Sources */,
 				C88DC0471F1D438A008A4D78 /* SearchBar.swift in Sources */,
 				C820EE051F2A6EE2007510F8 /* MainTableView.swift in Sources */,

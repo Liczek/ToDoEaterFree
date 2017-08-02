@@ -159,9 +159,10 @@ class MainViewController: UIViewController {
     func configureColorsAfterSwitchToggle() {
         print("odebrano w MainView informację o zmianie switcha")
         print("\(mainTableView.visibleCells.count)")
+        colorID = UserDefaults.standard.integer(forKey: "ActualColorOfApplication")
+        let color = AppColors.init(colorId: colorID)
         for cell in mainTableView.visibleCells as! [MainTableViewCell] {
-            cell.backgroundColor = UIColor.black
-            cell.categoryNameLabel.backgroundColor = UIColor.yellow
+            cell.backgroundColor = color.bgColor1
         }
         
     }
@@ -184,11 +185,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         for _ in 0..<20 {
             cell.categoryNameLabel.text = "Wiersz testowy nr \(indexPath.row + 1)"
             cell.descriptionLabel.text = "Detail Text o indexie \(indexPath.row)"
-            cell.contentView.backgroundColor = curentAppColor.bgColor1
-            cell.categoryNameLabel.textColor = curentAppColor.textColor2
+            cell.backgroundColor = curentAppColor.bgColor1
+            cell.categoryNameLabel.textColor = curentAppColor.black
             cell.descriptionLabel.textColor = curentAppColor.textColor1
             
-            configureMainTableColors()
         }
         
         

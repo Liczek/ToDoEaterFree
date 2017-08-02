@@ -21,6 +21,10 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
         }
     }
     var colors = [AppColorPicker]()
+    var settingsSections = ["Application Color Test","Date Style","Language"]
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +37,27 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
         colors[colorID].isActive = true
         
         configureSettingViewColors()
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(configureHeadersAfterSwitchToggle), name: Notification.Name("NewColorIDIsSet"), object: nil)
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return settingsSections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return colors.count
+        var numberOfRows = Int()
+        if section == 0 {
+            numberOfRows = colors.count
+        }
+        if section == 1 {
+            numberOfRows = 0
+        }
+        if section == 2 {
+            numberOfRows = 0
+        }
+        return numberOfRows
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,8 +79,33 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Application Color"
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionHeader = SettingsHeader()
+        let color = colors[colorID].color
+        
+        func configureSectionHeader() {
+            sectionHeader.backgroundColor = color.bgColor3
+            sectionHeader.sectionNameLabel.textColor = color.black
+            sectionHeader.sectionNameLabel.text = settingsSections[section]
+            sectionHeader.sectionNameLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
+            sectionHeader.headerBackground.backgroundColor = color.bgColor2
+        }
+        
+        if section == 0 {
+            configureSectionHeader()
+        }
+        if section == 1 {
+            configureSectionHeader()
+        }
+        if section == 2 {
+            configureSectionHeader()
+        }
+        return sectionHeader
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 25
     }
     
     func cellDidToggle(_ cell: ColorTableViewCell, toggle switchState: Bool) {
@@ -86,4 +132,12 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
         tableView.separatorColor = color.color.borderColor1
         navigationController?.navigationBar.tintColor = color.color.tintCustomColor
     }
+    
+    func configureHeadersAfterSwitchToggle() {
+        print("refresh headers color")
+//        for sectionIndex in 0..<settingsSections.count {
+//        tableView.reloadSections(IndexSet(integer: sectionIndex), with: .automatic)
+//        }
+    }
+    
 }
