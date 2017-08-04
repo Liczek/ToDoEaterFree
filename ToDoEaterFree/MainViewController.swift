@@ -15,9 +15,8 @@ class MainViewController: UIViewController {
     let mainTableView = MainTableView()
     let mainTableViewCell = MainTableViewCell()
     
-    var defaults = UserDefaults.standard
-    var colorID = Int()
-    var curentAppColor = AppColors()
+    var colorID: Int = 0
+    var appColor = AppColors()
     
     
     
@@ -27,7 +26,8 @@ class MainViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureColors()
+        configureAppColor()
+        configureMainVCColors()
         configureMainTableColors()
 
     }
@@ -60,7 +60,8 @@ class MainViewController: UIViewController {
         mainTableView.setContentHuggingPriority(UILayoutPriority.abs(501), for: UILayoutConstraintAxis.vertical)
         mainTableView.setContentCompressionResistancePriority(UILayoutPriority.abs(499), for: .vertical)
         
-        configureColors()
+        configureAppColor()
+        configureMainVCColors()
         configureMainTableColors()
         
         hideShowHideBar()
@@ -144,28 +145,27 @@ class MainViewController: UIViewController {
         }
     }
     
-    func configureColors() {
-        colorID = defaults.integer(forKey: "ActualColorOfApplication")
-        curentAppColor.colorID = self.colorID
-        curentAppColor.configureColors()
+    func configureAppColor() {
+        colorID = UserDefaults.standard.integer(forKey: "ActualColorOfApplication")
+        appColor = AppColors.init(colorId: colorID)
+        appColor.configureColors()
+    }
+    
+    func configureMainVCColors() {
         
-        searchBarView.backgroundImage.backgroundColor = curentAppColor.bgColor3
-        searchBarView.backgroundColor = curentAppColor.bgColor3
-        hideBarView.backgroundColor = curentAppColor.bgColor3
-        view.backgroundColor = curentAppColor.bgColor1
-        navigationController?.navigationBar.tintColor = curentAppColor.tintCustomColor
+        searchBarView.backgroundImage.backgroundColor = appColor.bgColor3
+        searchBarView.backgroundColor = appColor.bgColor3
+        hideBarView.backgroundColor = appColor.bgColor3
+        view.backgroundColor = appColor.bgColor1
+        navigationController?.navigationBar.tintColor = appColor.tintCustomColor
     }
     
     func configureColorsAfterSwitchToggle() {
-        print("odebrano w MainView informację o zmianie switcha")
-        print("\(mainTableView.visibleCells.count)")
-        colorID = UserDefaults.standard.integer(forKey: "ActualColorOfApplication")
-        let color = AppColors.init(colorId: colorID)
+        configureAppColor()
         for cell in mainTableView.visibleCells as! [MainTableViewCell] {
-            cell.backgroundColor = color.bgColor1
-            cell.descriptionLabel.textColor = color.textColor3
+            cell.backgroundColor = appColor.bgColor1
+            cell.descriptionLabel.textColor = appColor.textColor3
         }
-        
     }
 }
 
@@ -186,16 +186,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         for _ in 0..<20 {
             cell.categoryNameLabel.text = "Wiersz testowy nr \(indexPath.row + 1)"
             cell.descriptionLabel.text = "Detail Text o indexie \(indexPath.row)"
-            cell.backgroundColor = curentAppColor.bgColor1
-            cell.categoryNameLabel.textColor = curentAppColor.black
-            cell.descriptionLabel.textColor = curentAppColor.textColor3
+            cell.backgroundColor = appColor.bgColor1
+            cell.categoryNameLabel.textColor = appColor.universalTextColor
+            cell.descriptionLabel.textColor = appColor.textColor3
         }        
         return cell
     }
     
     func configureMainTableColors() {        
-        mainTableView.backgroundColor = curentAppColor.bgColor3
-        mainTableView.separatorColor = curentAppColor.borderColor2
+        mainTableView.backgroundColor = appColor.bgColor3
+        mainTableView.separatorColor = appColor.borderColor2
     }
     
 }

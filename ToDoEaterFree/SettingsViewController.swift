@@ -11,7 +11,8 @@ import UIKit
 
 class SettingsViewController: UITableViewController, ColorTableViewCellDelegate {
     
-    public var colorID = Int() {
+    var appColor = AppColors()
+    var colorID = Int() {
         didSet {
             UserDefaults.standard.set(colorID, forKey: "ActualColorOfApplication")
             
@@ -31,15 +32,10 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
         
         tableView.register(SettingsHeader.self, forHeaderFooterViewReuseIdentifier: "settingsHeader")
         
-        colors.append(AppColorPicker(colorName: "Green", isActive: false, color: AppColors.init(colorId: 0)))
-        colors.append(AppColorPicker(colorName: "Red", isActive: false, color: AppColors.init(colorId: 1)))
-        colors.append(AppColorPicker(colorName: "Blue", isActive: false, color: AppColors.init(colorId: 2)))
+        createColorPicker()
         
-        colorID = UserDefaults.standard.integer(forKey: "ActualColorOfApplication")
-        colors[colorID].isActive = true
-        
-        configureSettingViewColors()
-        
+        configureAppColor()
+        configureSettingVCColors()
         
         NotificationCenter.default.addObserver(self, selector: #selector(configureHeadersAfterSwitchToggle), name: Notification.Name("NewColorIDIsSet"), object: nil)
     }
@@ -71,11 +67,18 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
         if cell.switchItem.isOn {
             cell.switchItem.isEnabled = false
         }
-        cell.nameLabel.textColor = color.color.black
-        cell.backgroundColor = colors[colorID].color.bgColor1
-        cell.switchItem.onTintColor = color.color.bgColor3
-        cell.nameLabel.text = color.name
-        cell.switchItem.tintColor = UIColor.black
+            configureAppColor()
+            cell.nameLabel.textColor = appColor.universalTextColor
+            cell.backgroundColor = appColor.bgColor1
+            cell.switchItem.onTintColor = appColor.bgColor3
+            cell.nameLabel.text = color.name
+            cell.switchItem.tintColor = appColor.universalTextColor
+        
+//        cell.nameLabel.textColor = color.color.black
+//        cell.backgroundColor = colors[colorID].color.bgColor1
+//        cell.switchItem.onTintColor = color.color.bgColor3
+//        cell.nameLabel.text = color.name
+//        cell.switchItem.tintColor = UIColor.black
         cell.delegate = self
         
         return cell
@@ -87,7 +90,7 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
         
         func configureSectionHeader() {
             sectionHeader.contentView.backgroundColor = color.bgColor3
-            sectionHeader.sectionNameLabel.textColor = color.black
+            sectionHeader.sectionNameLabel.textColor = color.universalTextColor
             sectionHeader.sectionNameLabel.text = settingsSections[section]
             sectionHeader.sectionNameLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
             sectionHeader.headerBackground.backgroundColor = color.bgColor2
@@ -114,8 +117,9 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
         colorID = (tableView.indexPath(for: cell)?.row)!
         
         for colorCell in tableView.visibleCells as! [ColorTableViewCell] {
-            let color = colors[colorID].color
-            colorCell.backgroundColor = color.bgColor1
+            configureAppColor()
+            colorCell.backgroundColor = appColor.bgColor1
+            colorCell.switchItem.onTintColor = appColor.bgColor3
             if colorCell != cell {
                 colorCell.switchItem.setOn(false, animated: true)
                 colorCell.switchItem.isEnabled = true
@@ -124,15 +128,19 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
                 NotificationCenter.default.post(name: Notification.Name("NewColorIDIsSet"), object: nil)
             }
         }
-        
-        configureSettingViewColors()
+        configureSettingVCColors()
     }
+    func createColorPicker() {
+        colors.append(AppColorPicker(colorName: "Green", isActive: false, color: AppColors.init(colorId: 0)))
+        colors.append(AppColorPicker(colorName: "Red", isActive: false, color: AppColors.init(colorId: 1)))
+        colors.append(AppColorPicker(colorName: "Blue", isActive: false, color: AppColors.init(colorId: 2)))
+    }
+
     
-    func configureSettingViewColors() {
-        let color = colors[colorID]
-        tableView.backgroundColor = color.color.bgColor3
-        tableView.separatorColor = color.color.borderColor1
-        navigationController?.navigationBar.tintColor = color.color.tintCustomColor
+    func configureSettingVCColors() {
+        tableView.backgroundColor = appColor.bgColor3
+        tableView.separatorColor = appColor.borderColor1
+        navigationController?.navigationBar.tintColor = appColor.tintCustomColor
     }
     
     func configureHeadersAfterSwitchToggle() {
@@ -146,6 +154,12 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
             }
             
         }
+    }
+    
+    func configureAppColor() {
+        colorID = UserDefaults.standard.integer(forKey: "ActualColorOfApplication")
+        appColor = AppColors.init(colorId: colorID)
+        appColor.configureColors()
     }
     
 }

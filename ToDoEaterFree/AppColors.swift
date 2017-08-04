@@ -24,7 +24,7 @@ class AppColors {
     var placeholderColor1 = UIColor()
     var placeholderColor2 = UIColor()
     var tintCustomColor = UIColor()
-    var black = UIColor()
+    var universalTextColor = UIColor()
     
     convenience init(colorId: Int) {
         self.init()
@@ -49,7 +49,7 @@ class AppColors {
             self.placeholderColor1 = UIColor(red: 0/255, green: 255/255, blue: 0/255, alpha: 0.5)
             self.placeholderColor2 = UIColor(red: 49/255, green: 197/255, blue: 49/255, alpha: 0.5)
             self.tintCustomColor = UIColor(red: 49/255, green: 197/255, blue: 49/255, alpha: 1)
-            self.black = UIColor.black
+            self.universalTextColor = UIColor.black
         //red
         } else if colorID == 1 {
             self.textColor1 = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
@@ -63,7 +63,7 @@ class AppColors {
             self.placeholderColor1 = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.5)
             self.placeholderColor2 = UIColor(red: 197/255, green: 49/255, blue: 49/255, alpha: 0.5)
             self.tintCustomColor = UIColor(red: 197/255, green: 49/255, blue: 49/255, alpha: 1)
-            self.black = UIColor.black
+            self.universalTextColor = UIColor.black
         //blue
         } else if colorID == 2 {
             self.textColor1 = UIColor(red: 0/255, green: 0/255, blue: 255/255, alpha: 1)
@@ -77,7 +77,7 @@ class AppColors {
             self.placeholderColor1 = UIColor(red: 0/255, green: 0/255, blue: 255/255, alpha: 0.5)
             self.placeholderColor2 = UIColor(red: 49/255, green: 49/255, blue: 197/255, alpha: 0.5)
             self.tintCustomColor = UIColor(red: 49/255, green: 49/255, blue: 197/255, alpha: 1)
-            self.black = UIColor.black
+            self.universalTextColor = UIColor.black
         }
         
     }
