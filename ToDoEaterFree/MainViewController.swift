@@ -163,6 +163,7 @@ class MainViewController: UIViewController {
         let color = AppColors.init(colorId: colorID)
         for cell in mainTableView.visibleCells as! [MainTableViewCell] {
             cell.backgroundColor = color.bgColor1
+            cell.descriptionLabel.textColor = color.textColor3
         }
         
     }
@@ -187,11 +188,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             cell.descriptionLabel.text = "Detail Text o indexie \(indexPath.row)"
             cell.backgroundColor = curentAppColor.bgColor1
             cell.categoryNameLabel.textColor = curentAppColor.black
-            cell.descriptionLabel.textColor = curentAppColor.textColor1
-            
-        }
-        
-        
+            cell.descriptionLabel.textColor = curentAppColor.textColor3
+        }        
         return cell
     }
     

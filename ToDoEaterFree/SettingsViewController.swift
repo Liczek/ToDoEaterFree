@@ -29,6 +29,8 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.register(SettingsHeader.self, forHeaderFooterViewReuseIdentifier: "settingsHeader")
+        
         colors.append(AppColorPicker(colorName: "Green", isActive: false, color: AppColors.init(colorId: 0)))
         colors.append(AppColorPicker(colorName: "Red", isActive: false, color: AppColors.init(colorId: 1)))
         colors.append(AppColorPicker(colorName: "Blue", isActive: false, color: AppColors.init(colorId: 2)))
@@ -80,11 +82,11 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionHeader = SettingsHeader()
+        let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "settingsHeader") as! SettingsHeader
         let color = colors[colorID].color
         
         func configureSectionHeader() {
-            sectionHeader.backgroundColor = color.bgColor3
+            sectionHeader.contentView.backgroundColor = color.bgColor3
             sectionHeader.sectionNameLabel.textColor = color.black
             sectionHeader.sectionNameLabel.text = settingsSections[section]
             sectionHeader.sectionNameLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
@@ -135,9 +137,15 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
     
     func configureHeadersAfterSwitchToggle() {
         print("refresh headers color")
-//        for sectionIndex in 0..<settingsSections.count {
-//        tableView.reloadSections(IndexSet(integer: sectionIndex), with: .automatic)
-//        }
+        let color = colors[colorID].color
+        for sectionIndex in 0..<settingsSections.count {
+            if let cell = tableView.headerView(forSection: sectionIndex) {
+                let header = cell as! SettingsHeader
+                header.contentView.backgroundColor = color.bgColor3
+                header.headerBackground.backgroundColor = color.bgColor2
+            }
+            
+        }
     }
     
 }

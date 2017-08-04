@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SettingsHeader: UIView {
+class SettingsHeader: UITableViewHeaderFooterView {
     
     let sectionNameLabel = UILabel()
     let headerBackground = UIImageView()
