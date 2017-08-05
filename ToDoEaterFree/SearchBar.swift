@@ -92,7 +92,11 @@ class SearchBar: UIView, UITextFieldDelegate {
     func configurePropertiesOfViews() {
         //textField
         textField.placeholder = "Search"
-        textField.borderStyle = .roundedRect
+        textField.textAlignment = .center
+        textField.layer.masksToBounds = true
+        textField.borderStyle = .none
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 5
         
         //searchButton
         searchButton.setTitle("Search", for: .normal)
@@ -106,6 +110,7 @@ class SearchBar: UIView, UITextFieldDelegate {
         
         //textField
         textField.backgroundColor = appColor.bgColor1
+        textField.layer.borderColor = appColor.borderColor2.cgColor
         
         //searchButton
         searchButton.setTitleColor(appColor.textColor2, for: .normal)
@@ -119,6 +124,7 @@ class SearchBar: UIView, UITextFieldDelegate {
             NSLayoutConstraint.deactivate(self.disabledConstraints)
             NSLayoutConstraint.activate(self.enabledConstraints)
             textField.backgroundColor = UIColor.white
+            textField.textAlignment = .natural
             textField.placeholder = "Enter Category or Task title"
             self.layoutIfNeeded()
         }
@@ -130,6 +136,7 @@ class SearchBar: UIView, UITextFieldDelegate {
             NSLayoutConstraint.deactivate(self.enabledConstraints)
             NSLayoutConstraint.activate(self.disabledConstraints)
             textField.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+            textField.textAlignment = .center
             textField.placeholder = "Search"
             textField.resignFirstResponder()
             self.layoutIfNeeded()
@@ -142,6 +149,7 @@ class SearchBar: UIView, UITextFieldDelegate {
             NSLayoutConstraint.deactivate(self.enabledConstraints)
             NSLayoutConstraint.activate(self.disabledConstraints)
             textField.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+            textField.textAlignment = .center
             textField.placeholder = "Search"
             textField.resignFirstResponder()
             self.layoutIfNeeded()

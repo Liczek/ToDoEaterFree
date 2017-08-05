@@ -13,14 +13,15 @@ class MainTableViewCell: UITableViewCell {
     var categoryNameLabel = UILabel()
     var descriptionLabel = UILabel()
     var catalogImage = UIImageView()
+    var backgroundImage = UIImageView()
     
     var universalConstraints = [NSLayoutConstraint]()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: "mainCell")
+        super.init(style: style, reuseIdentifier: "mainCell")        
+        separatorInset = UIEdgeInsetsMake(0, 3, 0, 0)
         
-        separatorInset = UIEdgeInsetsMake(0, 8, 0, 8)
-        
+        addSubview(backgroundImage)
         addSubview(categoryNameLabel)
         addSubview(descriptionLabel)
         
@@ -28,8 +29,8 @@ class MainTableViewCell: UITableViewCell {
         
         categoryNameLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         descriptionLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
-
     }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -38,21 +39,27 @@ class MainTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         selectionStyle = .none
-        
     }
 
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
+    
     func configureConstraints() {
-        
+        backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         categoryNameLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        //backgroundImage
+        universalConstraints.append(backgroundImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 3))
+        universalConstraints.append(backgroundImage.topAnchor.constraint(equalTo: topAnchor, constant: 3))
+        universalConstraints.append(backgroundImage.bottomAnchor.constraint(equalTo: bottomAnchor))
+        universalConstraints.append(backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor))
         
         //categoryNameLabel
         universalConstraints.append(categoryNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5))

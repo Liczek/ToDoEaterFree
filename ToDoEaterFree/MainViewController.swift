@@ -77,8 +77,8 @@ class MainViewController: UIViewController {
         universalConstraints.append(hideBarView.heightAnchor.constraint(equalToConstant: 40))
         
         //mainTable
-        universalConstraints.append(mainTableView.topAnchor.constraint(equalTo: searchBarView.bottomAnchor, constant: 2))
-        universalConstraints.append(mainTableView.bottomAnchor.constraint(equalTo: hideBarView.topAnchor, constant: -2))
+        universalConstraints.append(mainTableView.topAnchor.constraint(equalTo: searchBarView.bottomAnchor, constant: 3))
+        universalConstraints.append(mainTableView.bottomAnchor.constraint(equalTo: hideBarView.topAnchor, constant: 0))
         universalConstraints.append(mainTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor))
         universalConstraints.append(mainTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor))        
         mainTableView.setContentHuggingPriority(UILayoutPriority.abs(501), for: UILayoutConstraintAxis.vertical)
@@ -152,7 +152,7 @@ class MainViewController: UIViewController {
     
     
     func configureMainTableColors() {
-        mainTableView.backgroundColor = appColor.bgColor3
+        mainTableView.backgroundColor = appColor.bgColor1
         mainTableView.separatorColor = appColor.borderColor2
     }
     
@@ -162,7 +162,8 @@ class MainViewController: UIViewController {
         
         //MainTable
         for cell in mainTableView.visibleCells as! [MainTableViewCell] {
-            cell.backgroundColor = appColor.bgColor1
+            cell.backgroundColor = appColor.bgColor2
+            cell.backgroundImage.backgroundColor = appColor.bgColor1
             cell.descriptionLabel.textColor = appColor.textColor3
         }
         configureMainTableColors()
@@ -198,7 +199,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         for _ in 0..<20 {
             cell.categoryNameLabel.text = "Wiersz testowy nr \(indexPath.row + 1)"
             cell.descriptionLabel.text = "Detail Text o indexie \(indexPath.row)"
-            cell.backgroundColor = appColor.bgColor1
+            cell.backgroundColor = appColor.bgColor2
+            cell.backgroundImage.backgroundColor = appColor.bgColor1
             cell.categoryNameLabel.textColor = appColor.universalTextColor
             cell.descriptionLabel.textColor = appColor.textColor3
         }        
