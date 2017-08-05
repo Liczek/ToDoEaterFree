@@ -66,7 +66,7 @@ class MainViewController: UIViewController {
         mainTableView.translatesAutoresizingMaskIntoConstraints = false
         
         //searchBar
-        universalConstraints.append(searchBarView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 2))
+        universalConstraints.append(searchBarView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0))
         universalConstraints.append(searchBarView.widthAnchor.constraint(equalTo: view.widthAnchor))
         universalConstraints.append(searchBarView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08))
         universalConstraints.append(searchBarView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
@@ -77,7 +77,7 @@ class MainViewController: UIViewController {
         universalConstraints.append(hideBarView.heightAnchor.constraint(equalToConstant: 40))
         
         //mainTable
-        universalConstraints.append(mainTableView.topAnchor.constraint(equalTo: searchBarView.bottomAnchor, constant: 3))
+        universalConstraints.append(mainTableView.topAnchor.constraint(equalTo: searchBarView.bottomAnchor, constant: 1))
         universalConstraints.append(mainTableView.bottomAnchor.constraint(equalTo: hideBarView.topAnchor, constant: 0))
         universalConstraints.append(mainTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor))
         universalConstraints.append(mainTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor))        
@@ -203,6 +203,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             cell.backgroundImage.backgroundColor = appColor.bgColor1
             cell.categoryNameLabel.textColor = appColor.universalTextColor
             cell.descriptionLabel.textColor = appColor.textColor3
+            cell.catalogImage.image = UIImage(named: "camera")
         }        
         return cell
     }
