@@ -17,9 +17,7 @@ class MainViewController: UIViewController {
     
     var colorID: Int = 0
     var appColor = AppColors()
-    
-    
-    
+        
     var universalConstraints = [NSLayoutConstraint]()
     var hiddenBarConstraints = [NSLayoutConstraint]()
     var shownBarConstraints = [NSLayoutConstraint]()
@@ -27,14 +25,13 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureAppColor()
-        configureMainVCColors()
-        configureMainTableColors()
-
+        
+        title = "ToDoEater"
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(configureColorsAfterSwitchToggle), name: Notification.Name("NewColorIDIsSet"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(configureHideBarAfterSwitchToggle), name: Notification.Name("NewColorIDIsSet"), object: nil)
         
         setSettingButton()
 
@@ -53,9 +50,6 @@ class MainViewController: UIViewController {
         
         NSLayoutConstraint.activate(universalConstraints)
         
-        mainTableView.setContentHuggingPriority(UILayoutPriority.abs(501), for: UILayoutConstraintAxis.vertical)
-        mainTableView.setContentCompressionResistancePriority(UILayoutPriority.abs(499), for: .vertical)
-        
         configureAppColor()
         configureMainVCColors()
         configureMainTableColors()
@@ -65,10 +59,6 @@ class MainViewController: UIViewController {
         hideBarView.hideButton.addTarget(self, action: #selector(hideShowHideBar), for: .touchUpInside)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func configureUniversalConstraints() {
         searchBarView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +66,7 @@ class MainViewController: UIViewController {
         mainTableView.translatesAutoresizingMaskIntoConstraints = false
         
         //searchBar
-        universalConstraints.append(searchBarView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor))
+        universalConstraints.append(searchBarView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 2))
         universalConstraints.append(searchBarView.widthAnchor.constraint(equalTo: view.widthAnchor))
         universalConstraints.append(searchBarView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08))
         universalConstraints.append(searchBarView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
@@ -87,10 +77,12 @@ class MainViewController: UIViewController {
         universalConstraints.append(hideBarView.heightAnchor.constraint(equalToConstant: 40))
         
         //mainTable
-        universalConstraints.append(mainTableView.topAnchor.constraint(equalTo: searchBarView.bottomAnchor, constant: 5))
-        universalConstraints.append(mainTableView.bottomAnchor.constraint(equalTo: hideBarView.topAnchor, constant: -5))
+        universalConstraints.append(mainTableView.topAnchor.constraint(equalTo: searchBarView.bottomAnchor, constant: 2))
+        universalConstraints.append(mainTableView.bottomAnchor.constraint(equalTo: hideBarView.topAnchor, constant: -2))
         universalConstraints.append(mainTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor))
-        universalConstraints.append(mainTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor))
+        universalConstraints.append(mainTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor))        
+        mainTableView.setContentHuggingPriority(UILayoutPriority.abs(501), for: UILayoutConstraintAxis.vertical)
+        mainTableView.setContentCompressionResistancePriority(UILayoutPriority.abs(499), for: .vertical)
     }
     
     
@@ -126,7 +118,6 @@ class MainViewController: UIViewController {
     func setSettingButton() {
         let settingsLogo = UIImage(named: "settings")
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: settingsLogo, style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToSettingsView))
-        
     }
    
     
@@ -153,26 +144,40 @@ class MainViewController: UIViewController {
         searchBarView.backgroundImage.backgroundColor = appColor.bgColor3
         searchBarView.backgroundColor = appColor.bgColor3
         hideBarView.backgroundColor = appColor.bgColor3
-        view.backgroundColor = appColor.bgColor1
+        view.backgroundColor = appColor.bgColor2
         navigationController?.navigationBar.tintColor = appColor.tintCustomColor
+        navigationController?.navigationBar.isTranslucent = true
+        //navigationController?.navigationBar.barTintColor = appColor.tintCustomColor
+    }
+    
+    
+    func configureMainTableColors() {
+        mainTableView.backgroundColor = appColor.bgColor3
+        mainTableView.separatorColor = appColor.borderColor2
     }
     
     
     func configureColorsAfterSwitchToggle() {
         configureAppColor()
+        
+        //MainTable
         for cell in mainTableView.visibleCells as! [MainTableViewCell] {
             cell.backgroundColor = appColor.bgColor1
             cell.descriptionLabel.textColor = appColor.textColor3
         }
-    }
-    
-    
-    func configureHideBarAfterSwitchToggle()  {
-        print("Hide bar color change")
+        configureMainTableColors()
+        configureMainVCColors()
+        
+        //SearchBar
+        searchBarView.configureAppColor()
+        searchBarView.configureColors()
+        
+        //HideBar
+        hideBarView.configureAppColor()
         hideBarView.configureColors()
-        hideBarView.onOffSegment.backgroundColor = appColor.bgColor1
-        hideBarView.onOffSegment.tintColor = appColor.tintCustomColor
     }
+    
+
 }
 
 
@@ -201,8 +206,4 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    func configureMainTableColors() {        
-        mainTableView.backgroundColor = appColor.bgColor3
-        mainTableView.separatorColor = appColor.borderColor2
-    }
 }

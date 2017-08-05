@@ -29,10 +29,10 @@ class HideBar: UIView {
         configureHideBarUniversalConstraints()
         NSLayoutConstraint.activate(universalConstraints)
         
-        configureColors()
+        configureAppColor()
         configureHideButton()
         configureOnOffSegment()
-        
+        configureColors()
     }
     
     
@@ -50,12 +50,16 @@ class HideBar: UIView {
     
     
     func configureOnOffSegment() {
-        onOffSegment.backgroundColor = appColor.bgColor1
-        onOffSegment.tintColor = appColor.tintCustomColor
         onOffSegment.layer.cornerRadius = 5
         onOffSegmentIndex = UserDefaults.standard.integer(forKey: "ActualIndexOfOnOffSegment")
         onOffSegment.selectedSegmentIndex = onOffSegmentIndex
         onOffSegment.addTarget(self, action: #selector(toggleCatalogs(sender:)), for: .valueChanged)
+    }
+    
+    
+    func configureColors() {
+        onOffSegment.backgroundColor = appColor.bgColor1
+        onOffSegment.tintColor = appColor.tintCustomColor
     }
     
     
@@ -104,7 +108,7 @@ class HideBar: UIView {
     }
     
     
-    func configureColors() {        
+    func configureAppColor() {
         colorID = UserDefaults.standard.integer(forKey: "ActualColorOfApplication")
         appColor = AppColors.init(colorId: colorID)
         appColor.configureColors()
