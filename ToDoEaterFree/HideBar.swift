@@ -10,15 +10,15 @@ import UIKit
 
 class HideBar: UIView {
     
-    var curentAppColor = AppColors()
+    var appColor = AppColors()
     var colorID = Int()
     
     var hideButton = UIButton()
     var isSlidedDown = true
     var onOffSegment = UISegmentedControl(items: ["Show empty", "Hide empty"])
     var universalConstraints = [NSLayoutConstraint]()
-    var defaults = UserDefaults.standard
     
+    var onOffSegmentIndex = Int()
 
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
@@ -35,34 +35,29 @@ class HideBar: UIView {
         
     }
     
+    
     func toggleSlideDown() {
         isSlidedDown = !isSlidedDown
     }
     
+    
     func configureHideButton() {
         hideButton.setTitle("Hide empty catalogs", for: .normal)
         hideButton.titleLabel!.font = UIFont.systemFont(ofSize: 10)
-        hideButton.addTarget(self, action: #selector(pressOrDragHideButton), for: .touchUpInside)
+        hideButton.addTarget(self, action: #selector(toggleSlideDown), for: .touchUpInside)
         
     }
-    
-    func pressOrDragHideButton() {
-        print("button pressed or draged")
-        toggleSlideDown()
-        
-    }
-    
     
     
     func configureOnOffSegment() {
-        //let segmentOptions = ["Show empty", "Hide empty"]
-        //onOffSegment = UISegmentedControl(items: segmentOptions)
-        onOffSegment.backgroundColor = curentAppColor.bgColor3
-        onOffSegment.tintColor = curentAppColor.tintCustomColor
+        onOffSegment.backgroundColor = appColor.bgColor1
+        onOffSegment.tintColor = appColor.tintCustomColor
         onOffSegment.layer.cornerRadius = 5
-        onOffSegment.selectedSegmentIndex = 0
+        onOffSegmentIndex = UserDefaults.standard.integer(forKey: "ActualIndexOfOnOffSegment")
+        onOffSegment.selectedSegmentIndex = onOffSegmentIndex
         onOffSegment.addTarget(self, action: #selector(toggleCatalogs(sender:)), for: .valueChanged)
     }
+    
     
     func toggleCatalogs(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -73,8 +68,8 @@ class HideBar: UIView {
         }
     }
     
+    
     func configureHideBarUniversalConstraints() {
-        
         hideButton.translatesAutoresizingMaskIntoConstraints = false
         onOffSegment.translatesAutoresizingMaskIntoConstraints = false
         
@@ -94,19 +89,25 @@ class HideBar: UIView {
         
     }
 
+    
     func showEmptyCatalogs() {
         print("Show Catalogs Mode ON")
+        onOffSegmentIndex = 0
+        UserDefaults.standard.set(onOffSegmentIndex, forKey: "ActualIndexOfOnOffSegment")
     }
+    
     
     func hideEmptyCatalogs() {
         print("Show Catalogs Mode OFF")
+        onOffSegmentIndex = 1
+        UserDefaults.standard.set(onOffSegmentIndex, forKey: "ActualIndexOfOnOffSegment")
     }
     
-    func configureColors() {
-        
-        colorID = defaults.integer(forKey: "ActualColorOfApplication")
-        curentAppColor.colorID = self.colorID
-        curentAppColor.configureColors()
+    
+    func configureColors() {        
+        colorID = UserDefaults.standard.integer(forKey: "ActualColorOfApplication")
+        appColor = AppColors.init(colorId: colorID)
+        appColor.configureColors()
     }
     
     
