@@ -164,6 +164,7 @@
                     <navigationItem key="navigationItem" id="Abc-bJ-C55"/>
                     <connections>
                         <segue destination="5WX-Ii-vGy" kind="show" identifier="goToSettings" id="vYe-ub-SHd"/>
+                        <segue destination="NhY-QE-hE3" kind="show" identifier="categoryDetails" id="bXU-ed-x6m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mub-rE-unJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -183,7 +184,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U2y-C2-UUf" id="GoQ-aO-MuS">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -197,6 +198,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xsy-2R-vHT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3450" y="132"/>
+        </scene>
+        <!--Category DetailTVC-->
+        <scene sceneID="PPn-E5-rk4">
+            <objects>
+                <tableViewController id="NhY-QE-hE3" customClass="CategoryDetailTVC" customModule="ToDoEaterFree" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MCw-vB-wFI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="NhY-QE-hE3" id="ipa-22-3Og"/>
+                            <outlet property="delegate" destination="NhY-QE-hE3" id="ZR1-fF-pAy"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="Abo-Dt-wVw" kind="show" identifier="showIconPicker" id="DbG-HR-chK"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yco-cy-KF8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3450" y="919"/>
+        </scene>
+        <!--Category Icon PickerTVC-->
+        <scene sceneID="qqw-gP-9RX">
+            <objects>
+                <tableViewController id="Abo-Dt-wVw" customClass="CategoryIconPickerTVC" customModule="ToDoEaterFree" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hzB-vR-dYM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="iconCell" id="6sw-vb-RjH">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6sw-vb-RjH" id="Xv0-io-KIa">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Abo-Dt-wVw" id="rhv-u7-84z"/>
+                            <outlet property="delegate" destination="Abo-Dt-wVw" id="mnr-Rl-2HX"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NIE-cl-Amt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4226" y="918"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FqZ-4p-c2A">

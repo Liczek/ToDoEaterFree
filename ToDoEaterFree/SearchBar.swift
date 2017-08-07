@@ -74,6 +74,7 @@ class SearchBar: UIView, UITextFieldDelegate {
         //textField
         disabledConstraints.append(textField.trailingAnchor.constraint(equalTo: searchButton.leadingAnchor))
         disabledConstraints.append(textField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.40))
+        disabledConstraints.append(textField.heightAnchor.constraint(equalToConstant: 18))
         
         //button
         disabledConstraints.append(searchButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.0))
@@ -83,6 +84,7 @@ class SearchBar: UIView, UITextFieldDelegate {
         //textField
         enabledConstraints.append(textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: universalDistance))
         enabledConstraints.append(textField.trailingAnchor.constraint(equalTo: searchButton.leadingAnchor, constant: -universalDistance))
+        enabledConstraints.append(textField.heightAnchor.constraint(equalToConstant: 24))
         
         //button
         enabledConstraints.append(searchButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25))
@@ -126,6 +128,8 @@ class SearchBar: UIView, UITextFieldDelegate {
             textField.backgroundColor = UIColor.white
             textField.textAlignment = .natural
             textField.placeholder = "Enter Category or Task title"
+            textField.font = UIFont.preferredFont(forTextStyle: .body)
+            textField.clearButtonMode = .whileEditing
             self.layoutIfNeeded()
         }
     }
@@ -138,6 +142,7 @@ class SearchBar: UIView, UITextFieldDelegate {
             textField.backgroundColor = UIColor.white.withAlphaComponent(0.8)
             textField.textAlignment = .center
             textField.placeholder = "Search"
+            textField.font = UIFont.preferredFont(forTextStyle: .footnote)
             textField.resignFirstResponder()
             self.layoutIfNeeded()
         }
@@ -151,6 +156,7 @@ class SearchBar: UIView, UITextFieldDelegate {
             textField.backgroundColor = UIColor.white.withAlphaComponent(0.8)
             textField.textAlignment = .center
             textField.placeholder = "Search"
+            textField.font = UIFont.preferredFont(forTextStyle: .footnote)
             textField.resignFirstResponder()
             self.layoutIfNeeded()
         }

@@ -15,6 +15,8 @@ class MainViewController: UIViewController {
     let mainTableView = MainTableView()
     let mainTableViewCell = MainTableViewCell()
     
+    var categoryName = String()
+    
     var colorID: Int = 0
     var appColor = AppColors()
         
@@ -68,7 +70,7 @@ class MainViewController: UIViewController {
         //searchBar
         universalConstraints.append(searchBarView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0))
         universalConstraints.append(searchBarView.widthAnchor.constraint(equalTo: view.widthAnchor))
-        universalConstraints.append(searchBarView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08))
+        universalConstraints.append(searchBarView.heightAnchor.constraint(equalTo: searchBarView.textField.heightAnchor, multiplier: 1.2))
         universalConstraints.append(searchBarView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
         
         //hideBar
@@ -129,6 +131,9 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToSettings" {
             _ = segue.destination as! SettingsViewController
+        } else if segue.identifier == "categoryDetails" {
+            let controller = segue.destination as! CategoryDetailTVC
+            controller.categoryName = sender as! String
         }
     }
     
@@ -182,7 +187,7 @@ class MainViewController: UIViewController {
 }
 
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+extension MainViewController: UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -204,9 +209,22 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             cell.categoryNameLabel.textColor = appColor.universalTextColor
             cell.descriptionLabel.textColor = appColor.textColor3
             cell.catalogImage.image = UIImage(named: "camera")
+            cell.selectionStyle = .none
         }        
         return cell
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let indexPath = tableView.indexPathForSelectedRow
+        let cell = tableView.cellForRow(at: indexPath!) as! MainTableViewCell
+        let categoryNameTest = cell.categoryNameLabel.text
+        performSegue(withIdentifier: "categoryDetails", sender: categoryNameTest)
+        
+    }
+    
+    
+    
     
     
 }

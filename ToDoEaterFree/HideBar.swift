@@ -15,7 +15,7 @@ class HideBar: UIView {
     
     var hideButton = UIButton()
     var isSlidedDown = true
-    var onOffSegment = UISegmentedControl(items: ["Show empty", "Hide empty"])
+    var onOffSegment = UISegmentedControl(items: ["Show all", "Hide empty"])
     var universalConstraints = [NSLayoutConstraint]()
     
     var onOffSegmentIndex = Int()
