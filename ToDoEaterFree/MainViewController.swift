@@ -170,6 +170,7 @@ class MainViewController: UIViewController {
             cell.backgroundColor = appColor.bgColor2
             cell.backgroundImage.backgroundColor = appColor.bgColor1
             cell.descriptionLabel.textColor = appColor.textColor3
+            cell.catalogImage.tintColor = appColor.textColor3
         }
         configureMainTableColors()
         configureMainVCColors()
@@ -182,8 +183,6 @@ class MainViewController: UIViewController {
         hideBarView.configureAppColor()
         hideBarView.configureColors()
     }
-    
-
 }
 
 
@@ -208,7 +207,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource, UINavi
             cell.backgroundImage.backgroundColor = appColor.bgColor1
             cell.categoryNameLabel.textColor = appColor.universalTextColor
             cell.descriptionLabel.textColor = appColor.textColor3
-            cell.catalogImage.image = UIImage(named: "camera")
+            cell.catalogImage.image = UIImage(named: "camera")?.withRenderingMode(.alwaysTemplate)
+            cell.catalogImage.tintColor = appColor.textColor3
             cell.rightBorderLine.backgroundColor = appColor.borderColor2
             cell.selectionStyle = .none
         }        

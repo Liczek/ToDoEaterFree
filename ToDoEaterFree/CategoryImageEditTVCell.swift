@@ -92,8 +92,10 @@ class CategoryImageEditTVCell: UITableViewCell {
         categoryImage.layer.borderColor = appColors.borderColor1.cgColor
         categoryImage.layer.cornerRadius = 5
         categoryImage.layer.masksToBounds = true
-        categoryImage.image = UIImage(named: "camera")
+        categoryImage.image = UIImage(named: "camera")?.withRenderingMode(.alwaysTemplate)
+        categoryImage.tintColor = appColors.textColor3
         categoryImage.contentMode = .scaleAspectFit
+        categoryImage.backgroundColor = appColors.bgColor1
         
         //goButton
         goButton.setTitle(">", for: .normal)
