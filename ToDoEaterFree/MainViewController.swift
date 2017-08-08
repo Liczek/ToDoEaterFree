@@ -140,7 +140,7 @@ class MainViewController: UIViewController {
             _ = segue.destination as! SettingsViewController
         } else if segue.identifier == "categoryDetails" {
             let controller = segue.destination as! CategoryDetailTVC
-            controller.categoryName = sender as! String
+            controller.category = sender as! Catrgory
             
         }
     }
@@ -214,9 +214,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource, UINavi
             cell.backgroundImage.backgroundColor = appColor.bgColor1
             cell.categoryNameLabel.textColor = appColor.universalTextColor
             cell.descriptionLabel.textColor = appColor.textColor3
-            cell.catalogImage.image = UIImage(named: "camera")?.withRenderingMode(.alwaysTemplate)
+            cell.catalogImage.image =  categories[indexPath.row].categoryImage
             cell.catalogImage.tintColor = appColor.textColor3
             cell.rightBorderLine.backgroundColor = appColor.borderColor2
+            cell.leftSplitLine.backgroundColor = appColor.borderColor2
+            cell.rightSplitLine.backgroundColor = appColor.bgColor2
             cell.selectionStyle = .none
         
             return cell
@@ -224,10 +226,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource, UINavi
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let indexPath = tableView.indexPathForSelectedRow
-        let cell = tableView.cellForRow(at: indexPath!) as! MainTableViewCell
-        let categoryNameTest = cell.categoryNameLabel.text
-        performSegue(withIdentifier: "categoryDetails", sender: categoryNameTest)
+        let category = categories[(indexPath.row)]
+        performSegue(withIdentifier: "categoryDetails", sender: category)
         
     }
     

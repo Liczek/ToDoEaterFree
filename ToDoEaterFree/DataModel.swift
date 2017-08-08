@@ -19,11 +19,11 @@ class DataModel {
     
     func configureCategories() {
         categories.append(Catrgory.init(name: "Dom", image: UIImage(named: "camera")!))
-        categories.append(Catrgory.init(name: "Szkoła", image: UIImage(named: "camera")!))
-        categories.append(Catrgory.init(name: "iMacs", image: UIImage(named: "camera")!))
-        categories.append(Catrgory.init(name: "Development", image: UIImage(named: "camera")!))
-        categories.append(Catrgory.init(name: "Praca", image: UIImage(named: "camera")!))
-        categories.append(Catrgory.init(name: "Urodziny", image: UIImage(named: "camera")!))
-        categories.append(Catrgory.init(name: "Kotki", image: UIImage(named: "camera")!))
+        categories.append(Catrgory.init(name: "Szkoła", image: UIImage(named: "app")!))
+        categories.append(Catrgory.init(name: "iMacs", image: UIImage(named: "compact")!))
+        categories.append(Catrgory.init(name: "Development", image: UIImage(named: "television")!))
+        categories.append(Catrgory.init(name: "Praca", image: UIImage(named: "view")!))
+        categories.append(Catrgory.init(name: "Urodziny", image: UIImage(named: "compass")!))
+        categories.append(Catrgory.init(name: "Kotki", image: UIImage(named: "alarm")!))
     }
 }
