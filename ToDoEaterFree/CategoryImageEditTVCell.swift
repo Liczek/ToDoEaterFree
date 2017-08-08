@@ -11,7 +11,7 @@ import UIKit
 class CategoryImageEditTVCell: UITableViewCell {
 
     var categoryImage = UIImageView()
-    var categoryName = UILabel()
+    var categoryName = UILabelWithInsets()
     var goButton = UIButton()
     
     var universalConstraints = [NSLayoutConstraint]()
@@ -58,7 +58,7 @@ class CategoryImageEditTVCell: UITableViewCell {
         //categoryName
         universalConstraints.append(categoryName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8))
         universalConstraints.append(categoryName.centerYAnchor.constraint(equalTo: centerYAnchor))
-        universalConstraints.append(categoryName.trailingAnchor.constraint(equalTo: categoryImage.leadingAnchor, constant: -8))
+        //universalConstraints.append(categoryName.trailingAnchor.constraint(equalTo: categoryImage.leadingAnchor, constant: -8))
         universalConstraints.append(categoryName.heightAnchor.constraint(equalTo: categoryImage.heightAnchor, multiplier: 1))
         
         //categoryImage
@@ -84,7 +84,7 @@ class CategoryImageEditTVCell: UITableViewCell {
         categoryName.layer.borderWidth = 1
         categoryName.layer.borderColor = appColors.borderColor1.cgColor
         categoryName.layer.masksToBounds = true
-        categoryName.layer.cornerRadius = 5
+        categoryName.layer.cornerRadius = 20
         categoryName.font = UIFont.preferredFont(forTextStyle: .body)
         categoryName.text = "Current icon"
         categoryName.textColor = appColors.universalTextColor

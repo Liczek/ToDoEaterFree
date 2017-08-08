@@ -11,7 +11,7 @@ import UIKit
 class CategoryIconPickerTVCell: UITableViewCell {
     
     var iconImage = UIImageView()
-    var iconName = UILabel()
+    var iconName = UILabelWithInsets()
     var appColor = Colors()
     var universalConstraints = [NSLayoutConstraint]()
     
@@ -49,7 +49,7 @@ class CategoryIconPickerTVCell: UITableViewCell {
         
         //iconName
         universalConstraints.append(iconName.leadingAnchor.constraint(equalTo: iconImage.trailingAnchor, constant: 8))
-        universalConstraints.append(iconName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 8))
+        //universalConstraints.append(iconName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 8))
         universalConstraints.append(iconName.centerYAnchor.constraint(equalTo: centerYAnchor))
         universalConstraints.append(iconName.heightAnchor.constraint(equalTo: iconImage.heightAnchor, multiplier: 0.5))
         
@@ -74,12 +74,13 @@ class CategoryIconPickerTVCell: UITableViewCell {
         //iconName
         iconName.layer.masksToBounds = true
         iconName.layer.borderWidth = 1
-        iconName.layer.cornerRadius = 5
+        iconName.layer.cornerRadius = 10
         iconName.layer.borderColor = appColor.borderColor1.cgColor
         iconName.font = UIFont.preferredFont(forTextStyle: .body)
         iconName.textAlignment = .natural
         iconName.textColor = appColor.universalTextColor
         iconName.backgroundColor = appColor.bgColor2
+        
         
     }
 

@@ -25,6 +25,8 @@
 		C852DF301F267251007820AF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C852DF2F1F267251007820AF /* SettingsViewController.swift */; };
 		C852DF321F26770C007820AF /* AppColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C852DF311F26770C007820AF /* AppColorPicker.swift */; };
 		C852DF341F2678E0007820AF /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C852DF331F2678E0007820AF /* ColorTableViewCell.swift */; };
+		C85C82251F3A22420095E368 /* UILabelWithInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85C82241F3A22420095E368 /* UILabelWithInsets.swift */; };
+		C85C82271F3A275B0095E368 /* UITextFieldWithInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85C82261F3A275B0095E368 /* UITextFieldWithInsets.swift */; };
 		C862C6F51F27C47D008740B5 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C862C6F41F27C47C008740B5 /* AppColors.swift */; };
 		C88DC0451F1D42EB008A4D78 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88DC0441F1D42EB008A4D78 /* MainViewController.swift */; };
 		C88DC0471F1D438A008A4D78 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88DC0461F1D438A008A4D78 /* SearchBar.swift */; };
@@ -55,6 +57,8 @@
 		C852DF2F1F267251007820AF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C852DF311F26770C007820AF /* AppColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColorPicker.swift; sourceTree = "<group>"; };
 		C852DF331F2678E0007820AF /* ColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
+		C85C82241F3A22420095E368 /* UILabelWithInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelWithInsets.swift; sourceTree = "<group>"; };
+		C85C82261F3A275B0095E368 /* UITextFieldWithInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldWithInsets.swift; sourceTree = "<group>"; };
 		C862C6F41F27C47C008740B5 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		C88DC0441F1D42EB008A4D78 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MainViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C88DC0461F1D438A008A4D78 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 				C84F46351F38D87E00FC8AAC /* CategoryImageEditTVCell.swift */,
 				C89914DB1F39074800CBF6D4 /* CategoryIconPickerTVC.swift */,
 				C89914DD1F390B3200CBF6D4 /* CategoryIconPickerTVCell.swift */,
+				C85C82281F3A2BD30095E368 /* Subclasses */,
 				C862C6F41F27C47C008740B5 /* AppColors.swift */,
 				C89914D91F38EBB100CBF6D4 /* Colors.swift */,
 				C84009C01F1A581E0075897D /* Assets.xcassets */,
@@ -138,6 +143,15 @@
 				C852DF311F26770C007820AF /* AppColorPicker.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		C85C82281F3A2BD30095E368 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				C85C82241F3A22420095E368 /* UILabelWithInsets.swift */,
+				C85C82261F3A275B0095E368 /* UITextFieldWithInsets.swift */,
+			);
+			name = Subclasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,9 +238,11 @@
 				C84228591F213FB8004B0768 /* HideBar.swift in Sources */,
 				C852DF341F2678E0007820AF /* ColorTableViewCell.swift in Sources */,
 				C84009D81F1A69340075897D /* Task.swift in Sources */,
+				C85C82251F3A22420095E368 /* UILabelWithInsets.swift in Sources */,
 				C8F5CFF21F3261650006DFA3 /* SettingsHeader.swift in Sources */,
 				C84009B71F1A581E0075897D /* AppDelegate.swift in Sources */,
 				C88DC0471F1D438A008A4D78 /* SearchBar.swift in Sources */,
+				C85C82271F3A275B0095E368 /* UITextFieldWithInsets.swift in Sources */,
 				C89914DE1F390B3200CBF6D4 /* CategoryIconPickerTVCell.swift in Sources */,
 				C89914DC1F39074800CBF6D4 /* CategoryIconPickerTVC.swift in Sources */,
 				C820EE051F2A6EE2007510F8 /* MainTableView.swift in Sources */,

@@ -11,7 +11,7 @@ import UIKit
 class SearchBar: UIView, UITextFieldDelegate {
 
     var backgroundImage = UIImageView()
-    var textField = UITextField()
+    var textField = UITextFieldWithInsets()
     var searchButton = UIButton()
     
     var colorID = Int()

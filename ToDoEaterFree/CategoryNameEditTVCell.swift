@@ -10,7 +10,7 @@ import UIKit
 
 class CategoryNameEditTVCell: UITableViewCell {
     
-    var nameTextField = UITextField()
+    var nameTextField = UITextFieldWithInsets()
     var acceptButton = UIButton()
     var universalConstraints = [NSLayoutConstraint]()
     
