@@ -108,6 +108,7 @@ class SettingsViewController: UITableViewController, ColorTableViewCellDelegate 
         return sectionHeader
     }
     
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         return 25

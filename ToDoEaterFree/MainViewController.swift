@@ -209,6 +209,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource, UINavi
             cell.categoryNameLabel.textColor = appColor.universalTextColor
             cell.descriptionLabel.textColor = appColor.textColor3
             cell.catalogImage.image = UIImage(named: "camera")
+            cell.rightBorderLine.backgroundColor = appColor.borderColor2
             cell.selectionStyle = .none
         }        
         return cell
@@ -221,6 +222,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource, UINavi
         let categoryNameTest = cell.categoryNameLabel.text
         performSegue(withIdentifier: "categoryDetails", sender: categoryNameTest)
         
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
     
     

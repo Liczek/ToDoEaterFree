@@ -58,11 +58,9 @@ class CategoryImageEditTVCell: UITableViewCell {
         //categoryName
         universalConstraints.append(categoryName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8))
         universalConstraints.append(categoryName.centerYAnchor.constraint(equalTo: centerYAnchor))
-        //universalConstraints.append(categoryName.trailingAnchor.constraint(equalTo: categoryImage.leadingAnchor, constant: -8))
-        universalConstraints.append(categoryName.heightAnchor.constraint(equalTo: categoryImage.heightAnchor, multiplier: 1))
         
         //categoryImage
-        universalConstraints.append(categoryImage.trailingAnchor.constraint(equalTo: goButton.leadingAnchor, constant: -8))
+        //universalConstraints.append(categoryImage.trailingAnchor.constraint(equalTo: goButton.leadingAnchor, constant: -8))
         universalConstraints.append(categoryImage.centerYAnchor.constraint(equalTo: centerYAnchor))
         universalConstraints.append(categoryImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1, constant: -8))
         universalConstraints.append(categoryImage.widthAnchor.constraint(equalTo: categoryImage.heightAnchor))
@@ -70,8 +68,8 @@ class CategoryImageEditTVCell: UITableViewCell {
         //goButton
         universalConstraints.append(goButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8))
         universalConstraints.append(goButton.centerYAnchor.constraint(equalTo: centerYAnchor))
-        universalConstraints.append(goButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5))
-        universalConstraints.append(goButton.widthAnchor.constraint(equalTo: goButton.heightAnchor))
+        universalConstraints.append(goButton.heightAnchor.constraint(equalTo: heightAnchor))
+        universalConstraints.append(goButton.leadingAnchor.constraint(equalTo: categoryImage.trailingAnchor))
     }
     
     func configureObjects() {
@@ -84,7 +82,7 @@ class CategoryImageEditTVCell: UITableViewCell {
         categoryName.layer.borderWidth = 1
         categoryName.layer.borderColor = appColors.borderColor1.cgColor
         categoryName.layer.masksToBounds = true
-        categoryName.layer.cornerRadius = 20
+        categoryName.layer.cornerRadius = 5
         categoryName.font = UIFont.preferredFont(forTextStyle: .body)
         categoryName.text = "Current icon"
         categoryName.textColor = appColors.universalTextColor
@@ -99,12 +97,12 @@ class CategoryImageEditTVCell: UITableViewCell {
         
         //goButton
         goButton.setTitle(">", for: .normal)
-        goButton.backgroundColor = appColors.bgColor3
-        goButton.setTitleColor(appColors.universalTextColor, for: .normal)
+        goButton.backgroundColor = appColors.bgColor2
+        goButton.setTitleColor(appColors.bgColor1, for: .normal)
         goButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
-        goButton.layer.borderWidth = 1
-        goButton.layer.borderColor = appColors.borderColor1.cgColor
-        goButton.layer.masksToBounds = true
-        goButton.layer.cornerRadius = 5
-    }    
+//        goButton.layer.borderWidth = 1
+//        goButton.layer.borderColor = appColors.borderColor1.cgColor
+//        goButton.layer.masksToBounds = true
+//        goButton.layer.cornerRadius = 5
+    }
 }

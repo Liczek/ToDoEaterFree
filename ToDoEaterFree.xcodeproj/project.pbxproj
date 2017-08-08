@@ -104,11 +104,7 @@
 				C84009BA1F1A581E0075897D /* Main.storyboard */,
 				C85135381F37451400187471 /* MainView */,
 				C85135391F37454E00187471 /* Settings */,
-				C85135361F3744A600187471 /* CategoryDetailTVC.swift */,
-				C84F46331F38D86500FC8AAC /* CategoryNameEditTVCell.swift */,
-				C84F46351F38D87E00FC8AAC /* CategoryImageEditTVCell.swift */,
-				C89914DB1F39074800CBF6D4 /* CategoryIconPickerTVC.swift */,
-				C89914DD1F390B3200CBF6D4 /* CategoryIconPickerTVCell.swift */,
+				C85C82291F3A2D410095E368 /* Categories */,
 				C85C82281F3A2BD30095E368 /* Subclasses */,
 				C862C6F41F27C47C008740B5 /* AppColors.swift */,
 				C89914D91F38EBB100CBF6D4 /* Colors.swift */,
@@ -152,6 +148,18 @@
 				C85C82261F3A275B0095E368 /* UITextFieldWithInsets.swift */,
 			);
 			name = Subclasses;
+			sourceTree = "<group>";
+		};
+		C85C82291F3A2D410095E368 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				C85135361F3744A600187471 /* CategoryDetailTVC.swift */,
+				C84F46331F38D86500FC8AAC /* CategoryNameEditTVCell.swift */,
+				C84F46351F38D87E00FC8AAC /* CategoryImageEditTVCell.swift */,
+				C89914DB1F39074800CBF6D4 /* CategoryIconPickerTVC.swift */,
+				C89914DD1F390B3200CBF6D4 /* CategoryIconPickerTVCell.swift */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -19,28 +19,59 @@ class CategoryDetailTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Details"
+        
         appColor.configureColors()
         
         tableView.register(CategoryNameEditTVCell.self, forCellReuseIdentifier: "categoryNameCell")
         tableView.register(CategoryImageEditTVCell.self, forCellReuseIdentifier: "categoryImageCell")
         
         tableView.backgroundColor = appColor.bgColor1
+        let dummyView = UIView()
+        dummyView.layer.borderWidth = 1
+        dummyView.layer.borderColor = appColor.borderColor1.cgColor
+        tableView.tableFooterView = dummyView
 
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return options.count
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if section == 0 {
+            return 1
+        } else if section == 1 {
+            return 1
+        } else {
+            return 0
+        }
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Header test"
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 15
+        } else if section == 1 {
+            return 15
+        } else {
+            return 1
+        }
     }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIImageView()
+        header.backgroundColor = appColor.bgColor1
+        header.layer.borderWidth = 1
+        header.layer.borderColor = appColor.borderColor1.cgColor
+        
+        return header
+    }
+    
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "Header test"
+//    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,8 +83,11 @@ class CategoryDetailTVC: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "categoryImageCell") as! CategoryImageEditTVCell
             cell.goButton.addTarget(self, action: #selector(goButtonTapped), for: UIControlEvents.touchUpInside)
             return cell
+        } else {
+            let dummyCell = UITableViewCell(style: .default, reuseIdentifier: "random")
+            dummyCell.backgroundColor = appColor.bgColor1
+            return dummyCell
         }
-        return UITableViewCell(style: .default, reuseIdentifier: "random")
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -62,6 +96,17 @@ class CategoryDetailTVC: UITableViewController {
     
     func goButtonTapped() {
         performSegue(withIdentifier: "showIconPicker", sender: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 40
+        } else if indexPath.section == 1 {
+            return 100
+        } else {
+            return 55
+        }
+        
     }
     
     
