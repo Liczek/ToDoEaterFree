@@ -12,7 +12,8 @@ class CategoryDetailTVC: UITableViewController {
     
     let options = ["Category name", "Category icon"]
     
-    var categoryName = String()
+    var category = Catrgory()
+    
     
     var appColor = Colors()
 
@@ -77,7 +78,7 @@ class CategoryDetailTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "categoryNameCell") as! CategoryNameEditTVCell
-            cell.nameTextField.text = categoryName
+            cell.nameTextField.text = category.
             return cell
         } else if indexPath.section == 1 && indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "categoryImageCell") as! CategoryImageEditTVCell

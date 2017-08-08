@@ -27,6 +27,8 @@
 		C852DF341F2678E0007820AF /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C852DF331F2678E0007820AF /* ColorTableViewCell.swift */; };
 		C85C82251F3A22420095E368 /* UILabelWithInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85C82241F3A22420095E368 /* UILabelWithInsets.swift */; };
 		C85C82271F3A275B0095E368 /* UITextFieldWithInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85C82261F3A275B0095E368 /* UITextFieldWithInsets.swift */; };
+		C85C822B1F3A55C50095E368 /* Catrgory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85C822A1F3A55C50095E368 /* Catrgory.swift */; };
+		C85C822D1F3A56EF0095E368 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85C822C1F3A56EF0095E368 /* DataModel.swift */; };
 		C862C6F51F27C47D008740B5 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C862C6F41F27C47C008740B5 /* AppColors.swift */; };
 		C88DC0451F1D42EB008A4D78 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88DC0441F1D42EB008A4D78 /* MainViewController.swift */; };
 		C88DC0471F1D438A008A4D78 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88DC0461F1D438A008A4D78 /* SearchBar.swift */; };
@@ -59,6 +61,8 @@
 		C852DF331F2678E0007820AF /* ColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
 		C85C82241F3A22420095E368 /* UILabelWithInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelWithInsets.swift; sourceTree = "<group>"; };
 		C85C82261F3A275B0095E368 /* UITextFieldWithInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldWithInsets.swift; sourceTree = "<group>"; };
+		C85C822A1F3A55C50095E368 /* Catrgory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catrgory.swift; sourceTree = "<group>"; };
+		C85C822C1F3A56EF0095E368 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		C862C6F41F27C47C008740B5 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		C88DC0441F1D42EB008A4D78 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MainViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C88DC0461F1D438A008A4D78 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -102,9 +106,11 @@
 				C84009B81F1A581E0075897D /* CategoryViewController.swift */,
 				C84009E11F1A71570075897D /* CategoryTableViewCell.swift */,
 				C84009BA1F1A581E0075897D /* Main.storyboard */,
+				C85C822A1F3A55C50095E368 /* Catrgory.swift */,
+				C85C822C1F3A56EF0095E368 /* DataModel.swift */,
 				C85135381F37451400187471 /* MainView */,
-				C85135391F37454E00187471 /* Settings */,
 				C85C82291F3A2D410095E368 /* Categories */,
+				C85135391F37454E00187471 /* Settings */,
 				C85C82281F3A2BD30095E368 /* Subclasses */,
 				C862C6F41F27C47C008740B5 /* AppColors.swift */,
 				C89914D91F38EBB100CBF6D4 /* Colors.swift */,
@@ -240,6 +246,7 @@
 				C84F46341F38D86500FC8AAC /* CategoryNameEditTVCell.swift in Sources */,
 				C84009BF1F1A581E0075897D /* ToDoEaterFree.xcdatamodeld in Sources */,
 				C84009B91F1A581E0075897D /* CategoryViewController.swift in Sources */,
+				C85C822B1F3A55C50095E368 /* Catrgory.swift in Sources */,
 				C862C6F51F27C47D008740B5 /* AppColors.swift in Sources */,
 				C820EE071F2A7760007510F8 /* MainTableViewCell.swift in Sources */,
 				C852DF301F267251007820AF /* SettingsViewController.swift in Sources */,
@@ -253,6 +260,7 @@
 				C85C82271F3A275B0095E368 /* UITextFieldWithInsets.swift in Sources */,
 				C89914DE1F390B3200CBF6D4 /* CategoryIconPickerTVCell.swift in Sources */,
 				C89914DC1F39074800CBF6D4 /* CategoryIconPickerTVC.swift in Sources */,
+				C85C822D1F3A56EF0095E368 /* DataModel.swift in Sources */,
 				C820EE051F2A6EE2007510F8 /* MainTableView.swift in Sources */,
 				C84009D61F1A691C0075897D /* Category.swift in Sources */,
 				C852DF321F26770C007820AF /* AppColorPicker.swift in Sources */,

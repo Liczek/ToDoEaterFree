@@ -10,6 +10,9 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    var categories = DataModel().categories
+    
+    
     let searchBarView = SearchBar()
     let hideBarView = HideBar()
     let mainTableView = MainTableView()
@@ -33,6 +36,10 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        print("arrey have\(categories.count)")
+        
         NotificationCenter.default.addObserver(self, selector: #selector(configureColorsAfterSwitchToggle), name: Notification.Name("NewColorIDIsSet"), object: nil)
         
         setSettingButton()
@@ -134,6 +141,7 @@ class MainViewController: UIViewController {
         } else if segue.identifier == "categoryDetails" {
             let controller = segue.destination as! CategoryDetailTVC
             controller.categoryName = sender as! String
+            
         }
     }
     
@@ -194,14 +202,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource, UINavi
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return categories.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as! MainTableViewCell
-        for _ in 0..<20 {
-            cell.categoryNameLabel.text = "Wiersz testowy nr \(indexPath.row + 1)"
+            cell.categoryNameLabel.text = categories[indexPath.row].categoryName
             cell.descriptionLabel.text = "Detail Text o indexie \(indexPath.row)"
             cell.backgroundColor = appColor.bgColor2
             cell.backgroundImage.backgroundColor = appColor.bgColor1
@@ -211,8 +218,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource, UINavi
             cell.catalogImage.tintColor = appColor.textColor3
             cell.rightBorderLine.backgroundColor = appColor.borderColor2
             cell.selectionStyle = .none
-        }        
-        return cell
+        
+            return cell
     }
     
     
