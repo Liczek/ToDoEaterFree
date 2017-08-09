@@ -37,6 +37,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mainTableView.separatorStyle = .none
         
         print("arrey have\(categories.count)")
         
@@ -165,7 +166,7 @@ class MainViewController: UIViewController {
     
     
     func configureMainTableColors() {
-        mainTableView.backgroundColor = appColor.bgColor1
+        mainTableView.backgroundColor = appColor.bgColor2
         mainTableView.separatorColor = appColor.borderColor2
     }
     
@@ -179,6 +180,10 @@ class MainViewController: UIViewController {
             cell.backgroundImage.backgroundColor = appColor.bgColor1
             cell.descriptionLabel.textColor = appColor.textColor3
             cell.catalogImage.tintColor = appColor.textColor3
+            cell.rightBorderLine.backgroundColor = appColor.borderColor2
+            cell.leftSplitLine.backgroundColor = appColor.borderColor2
+            cell.rightSplitLine.backgroundColor = appColor.bgColor2
+            cell.bottomLine.backgroundColor = appColor.borderColor2
         }
         configureMainTableColors()
         configureMainVCColors()
@@ -217,6 +222,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource, UINavi
             cell.catalogImage.image =  categories[indexPath.row].categoryImage
             cell.catalogImage.tintColor = appColor.textColor3
             cell.rightBorderLine.backgroundColor = appColor.borderColor2
+            cell.bottomLine.backgroundColor = appColor.borderColor2
             cell.leftSplitLine.backgroundColor = appColor.borderColor2
             cell.rightSplitLine.backgroundColor = appColor.bgColor2
             cell.selectionStyle = .none

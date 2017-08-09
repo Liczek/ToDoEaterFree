@@ -17,18 +17,20 @@ class MainTableViewCell: UITableViewCell {
     var rightBorderLine = UIImageView()
     var leftSplitLine = UIImageView()
     var rightSplitLine = UIImageView()
+    var bottomLine = UIImageView()
     
     var universalConstraints = [NSLayoutConstraint]()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: "mainCell")        
-        separatorInset = UIEdgeInsetsMake(0, 3, 0, 3)
+        separatorInset = UIEdgeInsetsMake(0, 3, -3, 3)
         
         addSubview(backgroundImage)
         addSubview(categoryNameLabel)
         addSubview(descriptionLabel)
         addSubview(catalogImage)
         addSubview(rightBorderLine)
+        addSubview(bottomLine)
         addSubview(leftSplitLine)
         addSubview(rightSplitLine)
         
@@ -65,6 +67,7 @@ class MainTableViewCell: UITableViewCell {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         catalogImage.translatesAutoresizingMaskIntoConstraints =  false
         rightBorderLine.translatesAutoresizingMaskIntoConstraints = false
+        bottomLine.translatesAutoresizingMaskIntoConstraints = false
         leftSplitLine.translatesAutoresizingMaskIntoConstraints = false
         rightSplitLine.translatesAutoresizingMaskIntoConstraints = false
         
@@ -97,6 +100,12 @@ class MainTableViewCell: UITableViewCell {
         universalConstraints.append(rightBorderLine.trailingAnchor.constraint(equalTo: backgroundImage.trailingAnchor))
         universalConstraints.append(rightBorderLine.bottomAnchor.constraint(equalTo: backgroundImage.bottomAnchor))
         universalConstraints.append(rightBorderLine.widthAnchor.constraint(equalToConstant: 1))
+        
+        //bottomLine
+        universalConstraints.append(bottomLine.bottomAnchor.constraint(equalTo: backgroundImage.bottomAnchor))
+        universalConstraints.append(bottomLine.leadingAnchor.constraint(equalTo: backgroundImage.leadingAnchor))
+        universalConstraints.append(bottomLine.trailingAnchor.constraint(equalTo: backgroundImage.trailingAnchor))
+        universalConstraints.append(bottomLine.heightAnchor.constraint(equalToConstant: 0.5))
         
         //left and right split line
         universalConstraints.append(leftSplitLine.leadingAnchor.constraint(equalTo: catalogImage.trailingAnchor, constant: 5))
