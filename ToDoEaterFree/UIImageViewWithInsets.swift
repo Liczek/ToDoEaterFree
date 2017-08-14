@@ -10,12 +10,13 @@ import UIKit
 
 class UIImageViewWithInsets: UIImageView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    var leftInset: CGFloat = 5.0
+    var topInset: CGFloat = 5.0
+    var rightInset: CGFloat = 5.0
+    var bottomInset: CGFloat = 5.0
+    
+    
+    
+        
 
 }

@@ -10,12 +10,16 @@ import UIKit
 
 class CategoryIconPickerTVC: UITableViewController {
     
+    var currentIcon = String()
+    
     var icons = ["alarm", "app", "command", "compact", "compass", "television", "view", "worldwide"]
     var appColor = Colors()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(CategoryIconPickerTVCell.self, forCellReuseIdentifier: "iconCell")
         appColor.configureColors()
+        print("view did lload \(currentIcon)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,6 +33,7 @@ class CategoryIconPickerTVC: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -38,9 +43,14 @@ class CategoryIconPickerTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "iconCell", for: indexPath) as! CategoryIconPickerTVCell
-        cell.backgroundColor = appColor.bgColor1
-
         cell.iconName.text = icons[indexPath.row]
+        if cell.iconName.text == currentIcon {
+            cell.backgroundColor = appColor.bgColor3
+            print("powinno działać")
+        } else {
+            cell.backgroundColor = appColor.bgColor1
+        }
+        
         cell.iconImage.image = UIImage(named: icons[indexPath.row])
 
         return cell

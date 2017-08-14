@@ -93,6 +93,9 @@ class CategoryDetailTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let selectedRow = tableView.cellForRow(at: indexPath) as! CategoryImageEditTVCell
+        let currentIcon = selectedRow.categoryName.text
+        performSegue(withIdentifier: "showIconPicker", sender: currentIcon)
     }
     
     func goButtonTapped() {
@@ -107,7 +110,14 @@ class CategoryDetailTVC: UITableViewController {
         } else {
             return 55
         }
-        
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showIconPicker"{
+            let controller = segue.destination as! CategoryIconPickerTVC
+            controller.currentIcon = sender as! String
+        }
     }
     
     
