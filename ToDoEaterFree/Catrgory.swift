@@ -12,10 +12,10 @@ import UIKit
 class Catrgory {
     
     var categoryName = String()
-    var categoryImage = UIImage()
+    var categoryImage = String()
     
-    init(name: String, image: UIImage) {
+    init(name: String, iconName: String) {
         categoryName = name
-        categoryImage = image
+        categoryImage = iconName
     }
 }

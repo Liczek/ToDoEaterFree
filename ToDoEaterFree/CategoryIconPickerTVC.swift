@@ -46,7 +46,6 @@ class CategoryIconPickerTVC: UITableViewController {
         cell.iconName.text = icons[indexPath.row]
         if cell.iconName.text == currentIcon {
             cell.backgroundColor = appColor.bgColor3
-            print("powinno działać")
         } else {
             cell.backgroundColor = appColor.bgColor1
         }

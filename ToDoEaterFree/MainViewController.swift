@@ -141,8 +141,7 @@ class MainViewController: UIViewController {
             _ = segue.destination as! SettingsViewController
         } else if segue.identifier == "categoryDetails" {
             let controller = segue.destination as! CategoryDetailTVC
-            controller.category = sender as! Catrgory
-            
+            controller.category = sender as! Catrgory            
         }
     }
     
@@ -219,7 +218,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource, UINavi
             cell.backgroundImage.backgroundColor = appColor.bgColor1
             cell.categoryNameLabel.textColor = appColor.universalTextColor
             cell.descriptionLabel.textColor = appColor.textColor3
-            cell.catalogImage.image =  categories[indexPath.row].categoryImage
+            let selectedIcon = categories[indexPath.row]
+            cell.catalogImage.image = UIImage(named: selectedIcon.categoryImage)
             cell.catalogImage.tintColor = appColor.textColor3
             cell.rightBorderLine.backgroundColor = appColor.borderColor2
             cell.bottomLine.backgroundColor = appColor.borderColor2
@@ -232,8 +232,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource, UINavi
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let category = categories[(indexPath.row)]
-        performSegue(withIdentifier: "categoryDetails", sender: category)
+        let selectedCategory = categories[indexPath.row]
+        print("Main View \(selectedCategory.categoryImage)")
+        performSegue(withIdentifier: "categoryDetails", sender: selectedCategory)
         
     }
     

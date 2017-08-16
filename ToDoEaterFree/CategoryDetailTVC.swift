@@ -12,7 +12,7 @@ class CategoryDetailTVC: UITableViewController {
     
     let options = ["Category name", "Category icon"]
     
-    var category = Catrgory(name: String(), image: UIImage())
+    var category = Catrgory(name: String(), iconName: String())
     
     var appColor = Colors()
 
@@ -81,7 +81,8 @@ class CategoryDetailTVC: UITableViewController {
             return cell
         } else if indexPath.section == 1 && indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "categoryImageCell") as! CategoryImageEditTVCell
-            cell.categoryImage.image = category.categoryImage
+            let imageName = self.category.categoryImage
+            cell.categoryImage.image = UIImage(named: imageName)
             cell.goButton.addTarget(self, action: #selector(goButtonTapped), for: UIControlEvents.touchUpInside)
             return cell
         } else {
@@ -93,9 +94,9 @@ class CategoryDetailTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let selectedRow = tableView.cellForRow(at: indexPath) as! CategoryImageEditTVCell
-        let currentIcon = selectedRow.categoryName.text
-        performSegue(withIdentifier: "showIconPicker", sender: currentIcon)
+        let currentIconName = category.categoryImage
+        print("Category Detail \(currentIconName)")
+        performSegue(withIdentifier: "showIconPicker", sender: currentIconName)
     }
     
     func goButtonTapped() {
